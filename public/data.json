@@ -1,6 +1,21 @@
 {
-  "name" : "Devipriya & Sreeharsh",
-  "date" : "January 19, 2025",
-  "description" : "Devipriya Weds Sreeharsh",
-  "location" : "Payyannur, India"
+  "title": "Devipriya & Sreeharsh",
+  "date": "Sunday, January 19, 2025",
+  "description": "Devipriya Weds Sreeharsh",
+  "message": "We invite you to join us on this special day of our love. Please join us for a day filled with laughter, joy, and happiness!",
+  "muhurtham": "12:09 PM - 12:45 PM",
+  "venue": "Vellur Sree Kudakkath Kottanacheri Devaswom Auditorium Vellur, Payyannur",
+  "location": "Payyannur, India",
+  "bride": {
+    "name": "Devipriya",
+    "image": "devipriya.jpg",
+    "address": "Mannambalath House, Payyanakkal, Kozhikode",
+    "parents": "Mrs. Anila P & Mr. Pradeepan M"
+  },
+  "groom": {
+    "name": "Sreeharsh",
+    "image": "sreeharsh.jpg",
+    "address": "Devaharsh, Muthiyalam, Korom, Payyannur",
+    "parents": "Mrs. Nisha P & Mr. Rajan KM"
+  }
 }
