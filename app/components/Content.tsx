@@ -33,7 +33,7 @@ export const Content: React.FC<ContentComponentProps> = ({ data, loading }) => {
   const { message, date, muhurtham, venue, bride, groom } = data;
   return (
     <div className="flex flex-col items-center justify-center z-10">
-      {loading ? <div className="text-center text-xl"></div> :
+      {loading ? <div className=""></div> :
         <>
           <Address props={groom ?? {}} />
           <p className="text-xs text-dark my-2">{message}</p>
