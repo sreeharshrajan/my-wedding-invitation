@@ -1,4 +1,4 @@
-export function Address({ props }: { props: any }) {
+export function Address({ props }: { props: object }) {
   return (
     <div className="flex flex-col items-center justify-center">
       <p className="text-normal text-dark">{props?.parents}</p>
