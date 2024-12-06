@@ -16,7 +16,7 @@ export const AnimatedTitle: React.FC<{ text: string, className: string }> = ({ t
       textRef.current.textContent = '';
       
       // Create spans for each character
-      chars.forEach((char, index) => {
+      chars.forEach((char) => {
         const span = document.createElement('span');
         span.textContent = char;
         span.style.opacity = '0';
