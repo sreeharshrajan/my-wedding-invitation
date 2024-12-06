@@ -1,4 +1,4 @@
-export function Muhurtham({ data }: { data: string }) {
+export function Muhurtham({ data }: { data: string | undefined }) {
   return (
     <div className="flex flex-col items-center justify-center m-2 ">
       <p className="text-xs text-dark">Muhurtham</p>
