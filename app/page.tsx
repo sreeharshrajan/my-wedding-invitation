@@ -40,7 +40,7 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return  <div className="card bg-white border border-gray-300 rounded-lg shadow-lg flex items-center justify-center text-center overflow-hidden w-[calc(100vh*5/7)] h-screen md:h-screen md:w-[calc(100vh*5/7)] sm:w-full sm:h-full max-w-full max-h-full p-6 box-border relative m-4"></div>;
+    return  <div className="card bg-white border border-gray-300 rounded-lg shadow-lg flex items-center justify-center text-center overflow-hidden w-[calc(100vh*5/7)] h-full md:h-[1600px] md:w-[calc(100vh*5/7)] sm:w-full sm:h-full max-w-full max-h-full p-6 box-border relative m-4"></div>;
   }
 
   return (

@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${aleo.className} flex items-center justify-center dark:bg-zinc-800 bg-gray-100 h-screen py-4 sm:p-8`}>
+      <body className={`${aleo.className} flex items-center justify-center dark:bg-zinc-800 bg-gray-100 max-h-[1600px] min-h-full py-4 sm:p-8`}>
         {children}
         {/* <div className="fixed bottom-0 right-0">
           <Image

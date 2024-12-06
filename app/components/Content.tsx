@@ -36,13 +36,13 @@ export const Content: React.FC<ContentComponentProps> = ({ data, loading }) => {
       {loading ? <div className="text-center text-xl"></div> :
         <>
           <Address props={groom ?? {}} />
-          <p className="text-sm text-dark mb-4">{message}</p>
+          <p className="text-xs text-dark my-2">{message}</p>
           <Title bride={bride?.name} groom={groom?.name} />
           <Address props={bride ?? {}} />
           <p className="text-normal my-2 text-dark">{date}</p>
           <Muhurtham data={muhurtham} />
           <p className="text-xs text-dark">At</p>
-          <p className="text-sm text-dark">{venue}</p>
+          <p className="text-xs text-dark">{venue}</p>
         </>
       }
     </div>
