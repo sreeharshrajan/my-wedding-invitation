@@ -6,6 +6,9 @@ import "./assets/css/globals.css";
 export const metadata: Metadata = {
   title: "Devipriya & Sreeharsh's Wedding",
   description: "Devipriya Weds Sreeharsh - January 19, 2025",
+  icons: {
+    icon: "/images/favicon.jpg",
+  },
 };
 
 const aleo = Aleo({ subsets: ["latin"], weight: "400" });
@@ -41,3 +44,4 @@ export default function RootLayout({
     </html>
   );
 }
+

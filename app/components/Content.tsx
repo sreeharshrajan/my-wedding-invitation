@@ -42,7 +42,15 @@ export const Content: React.FC<ContentComponentProps> = ({ data, loading }) => {
           <p className="text-normal my-2 text-dark">{date}</p>
           <Muhurtham data={muhurtham} />
           <p className="text-xs text-dark">At</p>
-          <p className="text-xs text-dark">{venue}</p>
+          <a className="flex items-center" href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 11 6 11s6-5.75 6-11c0-3.314-2.686-6-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" />
+              </svg>
+            </span>  
+            <p className="text-sm font-medium text-dark">{venue}</p>
+          </a>
+          
         </>
       }
     </div>
