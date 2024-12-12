@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Aleo } from 'next/font/google';
+import Image from "next/image";
 import "./assets/css/globals.css";
 
 export const metadata: Metadata = {
@@ -18,30 +19,24 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${aleo.className} flex items-center justify-center dark:bg-zinc-800 bg-gray-100 max-h-[1600px] min-h-full py-4 sm:p-8`}>
         {children}
-        {/* <div className="fixed bottom-0 right-0">
+       <div className="absolute bottom-[55%] right-[57%] z-10">
           <Image
-            src="/images/flowers_bottom.webp"
+            src="/images/flower_1.webp"
             alt="flower"
-            width={1753}
-            height={499}
+            width={195/4}
+            height={166/4}
           />
         </div>
-         <div className="fixed top-0 right-0">
+       <div className="absolute bottom-[35%] right-[38%] z-10">
           <Image
-            src="/images/flowers_top.webp"
+            src="/images/flower_2.webp"
             alt="flower"
-            width={1753}
-            height={499}
+            width={195/4}
+            height={166/4}
           />
         </div>
-         <div className="fixed bottom-0 right-0">
-          <Image
-            src="/images/flowers_right.webp"
-            alt="flower"
-            width={615}
-            height={2480}
-          />
-        </div> */}
+        
+       
       </body>
     </html>
   );
