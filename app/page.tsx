@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Sreeharsh & Devipriya's Wedding</title>
+        <title>Sreeharsh &amp; Devipriya&apos;s Wedding</title>
         <meta property="og:title" content="Sreeharsh & Devipriya's Wedding" />
         <meta property="og:description" content="You are cordially invited to join us on the auspicious occasion of Sreeharsh and Devipriya's wedding on January 19, 2025." />
         <meta property="og:image" content="/images/og-image.jpg" />
