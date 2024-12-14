@@ -43,7 +43,7 @@ export const Content: React.FC<ContentComponentProps> = ({ data, loading }) => {
           <p className="text-normal my-2 text-dark">{date}</p>
           <Muhurtham data={muhurtham} />
           <p className="text-xs text-dark">At</p>
-          <div className="w-1/2 justify-center items-center flex-col flex">
+          <div className="w-3/4 justify-center items-center flex-col flex">
             
           <Image src="/images/googlemaps.svg" alt="map" width={30} height={30} />
           <a className="flex items-center" href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7">

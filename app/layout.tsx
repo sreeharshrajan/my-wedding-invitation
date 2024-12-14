@@ -19,6 +19,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Sreeharsh & Devipriya's Wedding",
+        type: "image/jpeg",
       },
     ],
   },
