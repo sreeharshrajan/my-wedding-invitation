@@ -1,13 +1,26 @@
 import type { Metadata } from "next";
 import { Aleo } from 'next/font/google';
-import Image from "next/image";
 import "./assets/css/globals.css";
 
 export const metadata: Metadata = {
-  title: "Devipriya & Sreeharsh's Wedding",
-  description: "Devipriya Weds Sreeharsh - January 19, 2025",
+  title: "Sreeharsh & Devipriya's Wedding",
+  description: "You are cordially invited to join us on the auspicious occasion of Sreeharsh and Devipriya's wedding on January 19, 2025.",
   icons: {
     icon: "/images/favicon.jpg",
+  },
+  openGraph: {
+    title: "Sreeharsh & Devipriya's Wedding",
+    description: "You are cordially invited to join us on the auspicious occasion of Sreeharsh and Devipriya's wedding on January 19, 2025.",
+    url: "https://sreeh-weds-devi.vercel.app/",
+    siteName: "Sreeharsh & Devipriya's Wedding",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sreeharsh & Devipriya's Wedding",
+      },
+    ],
   },
 };
 
@@ -22,22 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${aleo.className} flex items-center justify-center dark:bg-zinc-800 bg-gray-100 max-h-[1600px] min-h-full py-4 sm:p-8`}>
         {children}
-       <div className="absolute left-[10%] bottom:[60%] sm:bottom-[55%] sm:left-[35%] z-10">
-          <Image
-            src="/images/flower_1.webp"
-            alt="flower"
-            width={195/4}
-            height={166/4}
-          />
-        </div>
-       <div className="absolute bottom-[30%] right-[20%] sm:bottom-[35%] sm:right-[35%] z-10">
-          <Image
-            src="/images/flower_2.webp"
-            alt="flower"
-            width={195/4}
-            height={166/4}
-          />
-        </div>
+      
         
        
       </body>
