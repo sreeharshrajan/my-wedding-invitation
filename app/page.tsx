@@ -1,7 +1,7 @@
 "use client";
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Content } from './components/Content';
+
 export interface ContentProps {
   message?: string;
   date?: string;
@@ -50,15 +50,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Sreeharsh &amp; Devipriya&apos;s Wedding</title>
-        <meta property="og:title" content="Sreeharsh & Devipriya's Wedding" />
-        <meta property="og:description" content="You are cordially invited to join us on the auspicious occasion of Sreeharsh and Devipriya's wedding on January 19, 2025." />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://sreeh-weds-devi.vercel.app/" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
       <main className="card bg-white border border-gray-300 rounded-lg shadow-lg flex items-center justify-center text-center overflow-hidden w-[calc(100vh*5/7)] h-screen md:h-screen md:w-[calc(100vh*5/7)] sm:w-full sm:h-full max-w-full max-h-full p-6 box-border relative m-4">
         <Content data={data} loading={loading} />
         <div className="flowers-top"></div>

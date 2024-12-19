@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Aleo } from 'next/font/google';
 import "./assets/css/globals.css";
+import { Seo } from './components/Seo';
 
 export const metadata: Metadata = {
   title: "Sreeharsh & Devipriya's Wedding",
@@ -34,11 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Seo />
       <body className={`${aleo.className} flex items-center justify-center dark:bg-zinc-800 bg-gray-100 max-h-[1600px] min-h-full py-4 sm:p-8`}>
         {children}
-      
-        
-       
       </body>
     </html>
   );
