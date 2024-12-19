@@ -43,7 +43,7 @@ export const Content: React.FC<ContentComponentProps> = ({ data, loading }) => {
           <p className="text-normal my-2 text-dark">{date}</p>
           <Muhurtham data={muhurtham} />
           <p className="text-xs text-dark">At</p>
-          <Image src="/images/googlemaps.svg" alt="map" width={30} height={30} />
+          {/* <Image src="/images/googlemaps.svg" alt="map" width={25} height={25} /> */}
 
           <a className="flex items-center" href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7">
             {/* <span>
@@ -53,22 +53,22 @@ export const Content: React.FC<ContentComponentProps> = ({ data, loading }) => {
             </span>   */}
             <p className="text-sm font-medium text-dark">{venue}</p>
           </a>
-           <div className="absolute left-[10%] bottom-[60%] sm:bottom-[55%] sm:left-[35%] z-10">
-          <Image
-            src="/images/flower_1.webp"
-            alt="flower"
-            width={195/4}
-            height={166/4}
-          />
-        </div>
-       <div className="absolute bottom-[30%] right-[20%] sm:bottom-[35%] sm:right-[35%] z-10">
-          <Image
-            src="/images/flower_2.webp"
-            alt="flower"
-            width={195/4}
-            height={166/4}
-          />
-        </div>
+          <div className="absolute left-[20px] bottom-[230px] sm:bottom-[290px] sm:left-[35px] z-10">
+            <Image
+              src="/images/flower_1.webp"
+              alt="flower"
+              width={195 / 4}
+              height={166 / 4}
+            />
+          </div>
+          <div className="absolute bottom-[135px] right-[10px] sm:bottom-[180px] sm:right-[30px] z-10">
+            <Image
+              src="/images/flower_2.webp"
+              alt="flower"
+              width={195 / 5}
+              height={166 / 5}
+            />
+          </div>
         </>
       }
     </div>
