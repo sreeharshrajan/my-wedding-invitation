@@ -8,8 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        romanticPink: "#FFC0CB",
+        elegantGold: "#FFD700",
+      },
+      fontFamily: {
+        primary: ['"Dancing Script"', 'cursive'],
+        secondary: ['"Open Sans"', 'sans-serif'],
       },
     },
   },
