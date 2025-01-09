@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Suspense } from 'react';
-import { LoaderProvider } from '@/components/GlobalLoader';
+import { LoaderProvider } from '@/components/LoaderProvider';
 import { NavigationLoader } from '@/components/NavigationLoader';
 import Loading from '@/components/Loading';
 

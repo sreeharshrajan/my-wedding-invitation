@@ -1,13 +1,30 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useGsapAnimation } from "@/hooks/useGsapAnimation";
+
 export const Hero = () => {
-  useGsapAnimation('.hero-text', {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate a delay to ensure this isn't the first component loaded
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000); // Delay for 1 second
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useGsapAnimation(".hero-text", {
     opacity: 0,
     y: 50,
     duration: 1.5,
-    ease: 'power3.out'
+    ease: "power3.out",
   });
+
+  if (!isLoaded) return (<section className="h-screen flex items-center justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
+  </section>
+  );
 
   return (
     <section className="h-screen flex items-center justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
