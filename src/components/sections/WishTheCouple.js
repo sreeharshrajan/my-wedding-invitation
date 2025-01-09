@@ -9,7 +9,6 @@ import {
 import { db } from "@/lib/firebase";
 import Card from "@/components/wish/Card";
 import Modal from "@/components/wish/Modal";
-import InfiniteWish from "../common/InfiniteWish";
 
 export default function WishTheCouple() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -89,11 +88,11 @@ export default function WishTheCouple() {
         </div>
 
         {/* Wishes Wall */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {wishes.map((wish) => (
             <Card key={wish.id} wish={wish} />
           ))}
-        </div> */}
+        </div>
 
         {/* Modal */}
         <Modal
