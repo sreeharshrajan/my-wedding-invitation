@@ -15,6 +15,15 @@ export default {
         primary: ['"Dancing Script"', 'cursive'],
         secondary: ['"Open Sans"', 'sans-serif'],
       },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
+      },
+      animation: {
+        scroll: "scroll 1s infinite linear",
+      },
     },
   },
   plugins: [],

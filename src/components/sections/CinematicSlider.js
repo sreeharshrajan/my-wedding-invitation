@@ -4,63 +4,35 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 
-export const ImageSlider  = () => {
+export const CinematicSlider = () => {
   const [activeIndex, setActiveIndex] = useState(1);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
   const cardsWrapperRef = useRef(null);
   const infoWrapperRef = useRef(null);
   const backgroundRef = useRef(null);
-
-  const minSwipeDistance = 50;
 
   const slides = [
     {
       url: '/prewed-1.jpg',
       alt: 'Pre-wedding photo 1',
-      title: 'प्यार',
+      title: 'CHAMONIX',
       subtitle: 'FRANCE',
       description: 'Let your dreams come true'
     },
     {
       url: '/prewed-2.jpg',
       alt: 'Pre-wedding photo 2',
-      title: 'പ്രണയം',
+      title: 'PARIS',
       subtitle: 'FRANCE',
       description: 'City of eternal love'
     },
     {
-      url: '/prewed-5.jpg',
+      url: '/prewed-3.jpg',
       alt: 'Pre-wedding photo 3',
       title: 'VENICE',
       subtitle: 'ITALY',
       description: 'Where romance meets history'
     }
   ];
-
-  const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isSwipe = Math.abs(distance) > minSwipeDistance;
-
-    if (isSwipe) {
-      if (distance > 0) {
-        handleSwap('right');
-      } else {
-        handleSwap('left');
-      }
-    }
-  };
 
   const getClass = (index) => {
     if (index === activeIndex) return 'current--card';
@@ -72,33 +44,37 @@ export const ImageSlider  = () => {
   const handleSwap = (direction) => {
     const timeline = gsap.timeline();
 
-    timeline
-      .to('.card-info.active .text', {
+    // Fade out current text
+    timeline.to('.card-info.active .text', {
+      duration: 0.4,
+      stagger: 0.1,
+      translateY: '-120px',
+      opacity: 0
+    });
+
+    // Update state after text fade out
+    timeline.call(() => {
+      if (direction === 'right') {
+        setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      } else {
+        setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+      }
+    });
+
+    // Fade in new text
+    timeline.fromTo(
+      '.card-info.active .text',
+      {
+        opacity: 0,
+        translateY: '40px'
+      },
+      {
         duration: 0.4,
         stagger: 0.1,
-        translateY: '-120px',
-        opacity: 0
-      })
-      .call(() => {
-        if (direction === 'right') {
-          setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-        } else {
-          setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-        }
-      })
-      .fromTo(
-        '.card-info.active .text',
-        {
-          opacity: 0,
-          translateY: '40px'
-        },
-        {
-          duration: 0.4,
-          stagger: 0.1,
-          translateY: '0px',
-          opacity: 1
-        }
-      );
+        translateY: '0px',
+        opacity: 1
+      }
+    );
   };
 
   return (
@@ -123,13 +99,7 @@ export const ImageSlider  = () => {
       </div>
 
       {/* Cards */}
-      <div
-        ref={cardsWrapperRef}
-        className="relative h-full flex items-center justify-center"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
+      <div ref={cardsWrapperRef} className="relative h-full flex items-center justify-center">
         <div className="relative w-[300px] h-[400px]">
           {slides.map((slide, index) => (
             <div
@@ -143,28 +113,23 @@ export const ImageSlider  = () => {
                   fill
                   className="object-cover"
                 />
-                {/* Card Text Overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 text-white text-center">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <h3 className="relative text-2xl font-bold mb-1 z-10">{slide.title}</h3>
-                  <p className="relative text-sm tracking-wider z-10">— {slide.subtitle} —</p>
-                </div>
+                <div className="absolute inset-0 bg-black/20" />
               </div>
             </div>
           ))}
         </div>
 
-        {/* Center Text Overlay */}
-        <div ref={infoWrapperRef} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* Text Overlays */}
+        <div ref={infoWrapperRef} className="absolute inset-0 flex items-center justify-center">
           {slides.map((slide, index) => (
             <div
               key={`info-${index}`}
               className={`card-info absolute text-white text-center transition-opacity duration-700 ${index === activeIndex ? 'active opacity-100' : 'opacity-0'
                 }`}
             >
-              <h2 className="text text-7xl font-bold mb-3">{slide.title}</h2>
-              <p className="text text-2xl mb-4 tracking-widest">— {slide.subtitle} —</p>
-              <p className="text text-lg font-light">{slide.description}</p>
+              <h2 className="text text-6xl font-bold mb-2">{slide.title}</h2>
+              <p className="text text-xl mb-4">— {slide.subtitle} —</p>
+              <p className="text text-lg italic">{slide.description}</p>
             </div>
           ))}
         </div>
@@ -193,12 +158,12 @@ export const ImageSlider  = () => {
           z-index: 30;
         }
         .previous--card {
-          transform: translateX(-30%) scale(0.85) rotate(-4deg);
+          transform: translateX(-30%) scale(0.85);
           opacity: 0.9;
           z-index: 20;
         }
         .next--card {
-          transform: translateX(30%) scale(0.85) rotate(4deg);
+          transform: translateX(30%) scale(0.85);
           opacity: 0.9;
           z-index: 20;
         }
@@ -207,4 +172,4 @@ export const ImageSlider  = () => {
   );
 };
 
-export default ImageSlider ;
+export default CinematicSlider;
