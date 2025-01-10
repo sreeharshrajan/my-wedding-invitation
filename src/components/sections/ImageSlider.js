@@ -1,10 +1,10 @@
-'use client';
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import gsap from 'gsap';
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import gsap from "gsap";
 
-export const ImageSlider  = () => {
+export const ImageSlider = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -16,26 +16,26 @@ export const ImageSlider  = () => {
 
   const slides = [
     {
-      url: '/prewed-1.jpg',
-      alt: 'Pre-wedding photo 1',
-      title: 'प्यार',
-      subtitle: 'FRANCE',
-      description: 'Let your dreams come true'
+      url: "/prewed-1.jpg",
+      alt: "Pre-wedding photo 1",
+      title: "प्यार",
+      subtitle: "FRANCE",
+      description: "Let your dreams come true",
     },
     {
-      url: '/prewed-2.jpg',
-      alt: 'Pre-wedding photo 2',
-      title: 'പ്രണയം',
-      subtitle: 'FRANCE',
-      description: 'City of eternal love'
+      url: "/prewed-2.jpg",
+      alt: "Pre-wedding photo 2",
+      title: "പ്രണയം",
+      subtitle: "FRANCE",
+      description: "City of eternal love",
     },
     {
-      url: '/prewed-5.jpg',
-      alt: 'Pre-wedding photo 3',
-      title: 'VENICE',
-      subtitle: 'ITALY',
-      description: 'Where romance meets history'
-    }
+      url: "/prewed-5.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
   ];
 
   const onTouchStart = (e) => {
@@ -55,48 +55,56 @@ export const ImageSlider  = () => {
 
     if (isSwipe) {
       if (distance > 0) {
-        handleSwap('right');
+        handleSwap("right");
       } else {
-        handleSwap('left');
+        handleSwap("left");
       }
     }
   };
 
   const getClass = (index) => {
-    if (index === activeIndex) return 'current--card';
-    if (index === activeIndex - 1 || (activeIndex === 0 && index === slides.length - 1)) return 'previous--card';
-    if (index === activeIndex + 1 || (activeIndex === slides.length - 1 && index === 0)) return 'next--card';
-    return '';
+    if (index === activeIndex) return "current--card";
+    if (
+      index === activeIndex - 1 ||
+      (activeIndex === 0 && index === slides.length - 1)
+    )
+      return "previous--card";
+    if (
+      index === activeIndex + 1 ||
+      (activeIndex === slides.length - 1 && index === 0)
+    )
+      return "next--card";
+    return "";
   };
 
   const handleSwap = (direction) => {
     const timeline = gsap.timeline();
 
     timeline
-      .to('.card-info.active .text', {
+      .to(".card-info.active .text", {
         duration: 0.4,
         stagger: 0.1,
-        translateY: '-120px',
-        opacity: 0
+        translateY: "-120px",
+        opacity: 0,
       })
       .call(() => {
-        if (direction === 'right') {
+        if (direction === "right") {
           setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
         } else {
           setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
         }
       })
       .fromTo(
-        '.card-info.active .text',
+        ".card-info.active .text",
         {
           opacity: 0,
-          translateY: '40px'
+          translateY: "40px",
         },
         {
           duration: 0.4,
           stagger: 0.1,
-          translateY: '0px',
-          opacity: 1
+          translateY: "0px",
+          opacity: 1,
         }
       );
   };
@@ -108,8 +116,9 @@ export const ImageSlider  = () => {
         {slides.map((slide, index) => (
           <div
             key={`bg-${index}`}
-            className={`absolute inset-0 transition-opacity duration-700 ${index === activeIndex ? 'opacity-100' : 'opacity-0'
-              }`}
+            className={`absolute inset-0 transition-opacity duration-700 ${
+              index === activeIndex ? "opacity-100" : "opacity-0"
+            }`}
           >
             <Image
               src={slide.url}
@@ -134,7 +143,9 @@ export const ImageSlider  = () => {
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute w-[300px] h-[400px] transition-all duration-700 ease-out ${getClass(index)}`}
+              className={`absolute w-[300px] h-[400px] transition-all duration-700 ease-out ${getClass(
+                index
+              )}`}
             >
               <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl transform-gpu">
                 <Image
@@ -144,10 +155,14 @@ export const ImageSlider  = () => {
                   className="object-cover"
                 />
                 {/* Card Text Overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 text-white text-center">
+                <div className="absolute inset-0 flex flex-col hidden items-center justify-end pb-8 text-white text-center">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <h3 className="relative text-2xl font-bold mb-1 z-10">{slide.title}</h3>
-                  <p className="relative text-sm tracking-wider z-10">— {slide.subtitle} —</p>
+                  <h3 className="relative text-2xl font-bold mb-1 z-10">
+                    {slide.title}
+                  </h3>
+                  <p className="relative text-sm tracking-wider z-10">
+                    — {slide.subtitle} —
+                  </p>
                 </div>
               </div>
             </div>
@@ -155,15 +170,20 @@ export const ImageSlider  = () => {
         </div>
 
         {/* Center Text Overlay */}
-        <div ref={infoWrapperRef} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div
+          ref={infoWrapperRef}
+          className="absolute inset-0 hidden flex items-center justify-center pointer-events-none"
+        >
           {slides.map((slide, index) => (
             <div
               key={`info-${index}`}
-              className={`card-info absolute text-white text-center transition-opacity duration-700 ${index === activeIndex ? 'active opacity-100' : 'opacity-0'
-                }`}
+              className={`card-info absolute text-white text-center 
+              }`}
             >
               <h2 className="text text-7xl font-bold mb-3">{slide.title}</h2>
-              <p className="text text-2xl mb-4 tracking-widest">— {slide.subtitle} —</p>
+              <p className="text text-2xl mb-4 tracking-widest">
+                — {slide.subtitle} —
+              </p>
               <p className="text text-lg font-light">{slide.description}</p>
             </div>
           ))}
@@ -171,14 +191,14 @@ export const ImageSlider  = () => {
 
         {/* Navigation Buttons */}
         <button
-          onClick={() => handleSwap('left')}
+          onClick={() => handleSwap("left")}
           className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-4 transition-all duration-200"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-6 h-6 text-white" />
         </button>
         <button
-          onClick={() => handleSwap('right')}
+          onClick={() => handleSwap("right")}
           className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-4 transition-all duration-200"
           aria-label="Next slide"
         >
@@ -207,4 +227,4 @@ export const ImageSlider  = () => {
   );
 };
 
-export default ImageSlider ;
+export default ImageSlider;

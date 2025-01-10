@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, memo } from "react";
-import { Calendar, MapPin, Clock, ChevronDown } from "lucide-react";
+import { Calendar, MapPin, Clock, ChevronDown, Calendar1 } from "lucide-react";
 import { useGsapAnimation } from "@/hooks/useGsapAnimation";
 
 // Memoized components for better performance
@@ -127,7 +127,7 @@ END:VCALENDAR`,
                   <h3 className="text-2xl font-serif text-gray-800">
                     The Big Day
                   </h3>
-                  <p className="text-lg text-gray-600">March 15, 2025</p>
+                  <p className="text-lg text-gray-600">January 19, 2025</p>
                 </div>
               </div>
 
@@ -135,9 +135,9 @@ END:VCALENDAR`,
                 <Clock className="w-8 h-8 text-rose-500" />
                 <div>
                   <h3 className="text-2xl font-serif text-gray-800">
-                    Ceremony Time
+                    Muhurtham
                   </h3>
-                  <p className="text-lg text-gray-600">10:00 AM - 2:00 PM</p>
+                  <p className="text-lg text-gray-600">12:09 PM - 12:45 PM</p>
                 </div>
               </div>
 
@@ -146,9 +146,11 @@ END:VCALENDAR`,
                 <div>
                   <h3 className="text-2xl font-serif text-gray-800">Venue</h3>
                   <p className="text-lg text-gray-600">
-                    Grand Palace Convention Center
+                    Vellur Sree Kudakkath Kottanacheri Devaswom Auditorium
                   </p>
-                  <p className="text-gray-500">123 Wedding Lane, Dream City</p>
+                  <p className="text-gray-500">
+                    Vellur, Payyannur, Kannur, Kerala
+                  </p>
                 </div>
               </div>
             </div>
@@ -172,31 +174,16 @@ END:VCALENDAR`,
               {showCalendarOptions && (
                 <div className="absolute mt-2 w-full bg-white rounded-xl shadow-xl z-20 overflow-hidden">
                   <CalendarButton onClick={() => handleCalendarClick("google")}>
-                    <img
-                      src="/google-calendar.png"
-                      alt="Google Calendar"
-                      className="w-5 h-5"
-                    />
+                    <Calendar1 />
                     <span>Google Calendar</span>
                   </CalendarButton>
                   <CalendarButton
                     onClick={() => handleCalendarClick("outlook")}
                   >
-                    <img
-                      src="/outlook-calendar.png"
-                      alt="Outlook"
-                      className="w-5 h-5"
-                    />
+                    <Calendar1 />
                     <span>Outlook Calendar</span>
                   </CalendarButton>
-                  <CalendarButton onClick={() => handleCalendarClick("yahoo")}>
-                    <img
-                      src="/yahoo-calendar.png"
-                      alt="Yahoo"
-                      className="w-5 h-5"
-                    />
-                    <span>Yahoo Calendar</span>
-                  </CalendarButton>
+
                   <CalendarButton onClick={() => handleCalendarClick("ics")}>
                     <Calendar className="w-5 h-5" />
                     <span>Download ICS File</span>
