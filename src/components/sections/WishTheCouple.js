@@ -7,8 +7,10 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import Card from "@/components/wish/Card";
+import Wall from "@/components/wish/Wall";
 import Modal from "@/components/wish/Modal";
+import Button from "../wish/Button";
+import Card from "../wish/Card";
 
 export default function WishTheCouple() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,16 +77,15 @@ export default function WishTheCouple() {
   };
 
   return (
-    <section className="py-20 h-screen">
+    <section className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-serif mb-4"> Wall of Wishes</h2>
-          <button
+          <h2 className="text-4xl font-serif mb-4 text-gray-700"> Wall of Wishes</h2>
+          <Button
             onClick={() => setIsModalOpen(true)}
-            className="bg-rose-500 text-white px-6 py-3 rounded hover:bg-rose-600 transition"
-          >
-            Send Your Wishes
-          </button>
+            text="Send Your Wishes"
+          />
+
         </div>
 
         {/* Wishes Wall */}

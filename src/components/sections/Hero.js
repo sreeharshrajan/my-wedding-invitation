@@ -23,15 +23,22 @@ export const Hero = () => {
     ease: "power3.out",
   });
 
-  if (!isLoaded) return (<section className="h-screen flex items-center justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
-  </section>
-  );
+  if (!isLoaded)
+    return (
+      <section className="h-screen flex items-center justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center"></section>
+    );
 
   return (
     <section className="h-screen flex items-center justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       <div className="text-center hero-text">
-        <h2 className="text-6xl md:text-8xl font-serif text-white">Deviprya & Sreeharsh</h2>
-        <h5>We are getting married January 19, 2025</h5>
+        <h5 className="mt-4 text-lg leading-8 text-white font-serif">
+          We are getting married on January 19, 2025
+        </h5>
+
+        <h2 className="text-6xl md:text-8xl font-serif text-white">
+          Deviprya & Sreeharsh
+        </h2>
+
         <CountdownTimer targetTime={targetDate} />
       </div>
     </section>
