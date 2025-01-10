@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,8 +7,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        romanticPink: "#FFC0CB",
+        elegantGold: "#FFD700",
+      },
+      fontFamily: {
+        primary: ['"Dancing Script"', 'cursive'],
+        secondary: ['"Open Sans"', 'sans-serif'],
+      },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
+      },
+      animation: {
+        scroll: "scroll 1s infinite linear",
       },
     },
   },
