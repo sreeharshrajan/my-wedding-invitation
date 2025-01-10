@@ -24,18 +24,18 @@ export const Hero = () => {
 
   if (!isLoaded) {
     return (
-      <section className="h-screen flex items-center justify-center bg-[url('/images/hero-bg.jpg')] bg-cover bg-center" />
+      <section className="h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center" />
     );
   }
 
   return (
-    <section className="h-screen flex items-center justify-center bg-[url('/images/hero-bg.jpg')] bg-cover bg-center">
-      <div className="text-center hero-text">
-        <h5 className="mt-4 text-lg leading-8 text-white font-serif">
+    <section className="h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center">
+      <div className="text-center hero-text px-4 sm:px-6 md:px-8">
+        <h5 className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl leading-6 sm:leading-7 md:leading-8 text-white font-serif">
           We are getting married on January 19, 2025
         </h5>
 
-        <h2 className="text-6xl md:text-8xl font-serif text-white">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif text-white mt-2 sm:mt-3 md:mt-4">
           Deviprya &amp; Sreeharsh
         </h2>
 
@@ -44,4 +44,3 @@ export const Hero = () => {
     </section>
   );
 };
-
