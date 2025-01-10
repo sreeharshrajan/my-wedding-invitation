@@ -13,7 +13,8 @@ export function Content({ data, loading }) {
         <>
           <Address props={groom ?? {}} />
           <p className="text-xs text-stone-900 my-2">{message}</p>
-          <Title bride={bride?.name} groom={groom?.name} />
+            <Title bride={bride?.name} groom={groom?.name} />
+            <p className="mt-2"></p>
           <Address props={bride ?? {}} />
           <p className="text-normal my-2 text-stone-900">{date}</p>
           <Muhurtham data={muhurtham} />
