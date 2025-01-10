@@ -155,7 +155,7 @@ END:VCALENDAR`,
               </div>
             </div>
 
-            <div className="date-venue-item relative">
+            <div className="date-venue-item relative hidden">
               <button
                 onClick={() => setShowCalendarOptions((prev) => !prev)}
                 className="w-full px-6 py-4 bg-rose-500 text-white text-lg font-medium rounded-xl 
