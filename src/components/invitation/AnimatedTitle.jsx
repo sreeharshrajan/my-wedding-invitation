@@ -1,6 +1,6 @@
+import { gsap } from 'gsap';
 import React, { useEffect, useRef } from 'react';
 import { Dancing_Script } from 'next/font/google';
-import { gsap } from 'gsap';
 
 const dancing = Dancing_Script({ subsets: ["latin"], weight: "400" });
 
