@@ -41,11 +41,13 @@ export default function RootLayout({ children }) {
         className={`${aleo.variable}  antialiased`}
       >
         <LoaderProvider>
-          <NavigationLoader />
-          <Suspense fallback={<Loader />}>{children}</Suspense>
+          <Suspense fallback={<Loader />}>
+            <NavigationLoader />
+            {children}
+          </Suspense>
         </LoaderProvider>
       </body>
-    </html>
+    </html >
   );
 }
 
