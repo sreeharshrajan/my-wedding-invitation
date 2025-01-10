@@ -26,7 +26,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -86,4 +85,13 @@ body {
   background-position: right;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }

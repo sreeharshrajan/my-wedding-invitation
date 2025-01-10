@@ -4,6 +4,7 @@ import { useEffect, Suspense } from 'react';
 import Loader from '@/components/ui/Loader';
 import Lenis from 'lenis';
 import { Hero } from '@/components/home/Hero';
+import { Quote } from '@/components/home/Quote';
 
 
 export default function Home() {
@@ -24,6 +25,9 @@ export default function Home() {
   //   </div>
   // );
   return (
-    <Hero />
+    <>
+      <Hero />
+      <Quote />
+    </>
   );
 }
