@@ -51,7 +51,7 @@ const Quote = () => {
                 <div className="relative min-h-[120px] flex items-center justify-center">
                   <h1 className="text-3xl md:text-4xl font-serif text-gray-800 leading-relaxed">
                     {text}
-                    <span className={`inline-block w-0.5 h-6 bg-gray-800 ml-1 -mb-1 transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`} hidden />
+                    <span className={`inline-block w-0.5 h-6 bg-gray-800 ml-1 -mb-1 transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}  />
                   </h1>
                 </div>
                 <div className={`transform transition-all duration-1000 ${isTypingComplete ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>

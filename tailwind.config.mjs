@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         primary: ['"Dancing Script"', 'cursive'],
         secondary: ['"Open Sans"', 'sans-serif'],
+        'aleo': ['Aleo', 'serif'],
       },
       keyframes: {
         scroll: {

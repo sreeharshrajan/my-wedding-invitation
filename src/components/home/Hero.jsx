@@ -35,7 +35,7 @@ const Hero = () => {
           We are getting married on January 19, 2025
         </h5>
 
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif text-white mt-2 sm:mt-3 md:mt-4">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif text-white mt-2 sm:mt-3 md:mt-4  font-primary">
           Deviprya &amp; Sreeharsh
         </h2>
 
