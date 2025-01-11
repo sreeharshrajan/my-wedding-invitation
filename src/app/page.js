@@ -8,7 +8,7 @@ import Quote from '@/components/home/Quote';
 import Schedule from '@/components/home/Schedule';
 import Slider from '@/components/home/Slider';
 import WishWall from '@/components/home/WishWall';
-
+import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -34,6 +34,7 @@ export default function Home() {
       <Schedule />
       <Slider />
       <WishWall />
+      <Footer />
     </>
   );
 }

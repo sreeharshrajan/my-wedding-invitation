@@ -10,12 +10,14 @@
     "name": "Devipriya",
     "image": "devipriya.jpg",
     "address": "Mannambalath House, Payyanakkal, Kozhikode",
-    "parents": "Mrs. Anila P & Mr. Pradeepan M"
+    "parents": "Mrs. Anila P & Mr. Pradeepan M",
+    "phone": "+91 944 000 0000"
   },
   "groom": {
     "name": "Sreeharsh",
     "image": "sreeharsh.jpg",
     "address": "Devaharsh, Muthiyalam, Korom, Payyannur",
-    "parents": "Mrs. Nisha P & Mr. Rajan KM"
+    "parents": "Mrs. Nisha P & Mr. Rajan KM",
+    "phone": "+91 944 000 0000"
   }
 }
