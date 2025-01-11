@@ -3,8 +3,9 @@ import Image from "next/image";
 import { useEffect, Suspense } from 'react';
 import Loader from '@/components/ui/Loader';
 import Lenis from 'lenis';
-import { Hero } from '@/components/home/Hero';
-import { Quote } from '@/components/home/Quote';
+import Hero from '@/components/home/Hero';
+import Quote from '@/components/home/Quote';
+import Schedule from '@/components/home/Schedule';
 
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
     <>
       <Hero />
       <Quote />
+      <Schedule />
     </>
   );
 }

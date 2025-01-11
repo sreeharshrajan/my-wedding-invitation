@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useGsapAnimation } from "@/hooks/useGsapAnimation";
 import CountdownTimer from "@/components/home/CountdownTimer";
 
-export const Hero = () => {
+const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const targetDate = new Date("2025-01-19T12:00:00");
 
@@ -44,3 +44,5 @@ export const Hero = () => {
     </section>
   );
 };
+
+export default Hero;

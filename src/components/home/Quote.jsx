@@ -2,7 +2,7 @@
 import { ArrowDown } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
-export const Quote = () => {
+const Quote = () => {
   const [text, setText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
@@ -68,3 +68,4 @@ export const Quote = () => {
   );
 };
 
+export default Quote;
