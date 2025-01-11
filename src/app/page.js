@@ -6,6 +6,8 @@ import Lenis from 'lenis';
 import Hero from '@/components/home/Hero';
 import Quote from '@/components/home/Quote';
 import Schedule from '@/components/home/Schedule';
+import Slider from '@/components/home/Slider';
+import WishWall from '@/components/home/WishWall';
 
 
 export default function Home() {
@@ -30,6 +32,8 @@ export default function Home() {
       <Hero />
       <Quote />
       <Schedule />
+      <Slider />
+      <WishWall />
     </>
   );
 }
