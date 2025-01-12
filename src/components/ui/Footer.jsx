@@ -61,7 +61,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 h-full flex flex-col justify-center relative">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl text-gray-800 font-light tracking-wide">
+          <h1 className="text-3xl md:text-4xl text-gray-800 font-primary tracking-wide">
             {details?.title || '\u00A0'}
           </h1>
           <p className="text-gray-500 text-base md:text-lg mt-3 font-light tracking-wider">
