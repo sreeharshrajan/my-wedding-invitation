@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const [details, setDetails] = useState(null);
@@ -28,22 +25,13 @@ const Footer = () => {
   useEffect(() => {
     const footer = footerRef.current;
 
-    gsap.fromTo(footer,
-      {
-        opacity: 0,
-        y: -100,
-      },
+    gsap.fromTo(
+      footer,
+      { opacity: 0 },
       {
         opacity: 1,
-        y: 0,
-        duration: 1,
+        duration: 1.5,
         ease: "power3.out",
-        scrollTrigger: {
-          trigger: footer,
-          start: "top bottom-=100",
-          end: "top center",
-          toggleActions: "play none none reverse"
-        }
       }
     );
   }, []);
