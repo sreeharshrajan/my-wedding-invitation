@@ -138,7 +138,7 @@ export const Slider = () => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="relative w-[300px] h-[400px]">
+        <div className="relative w-[300px] h-[400px] sm:px-4 lg:p-0">
           {slides.map((slide, index) => (
             <div
               key={index}
