@@ -10,7 +10,7 @@ const Footer = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/details');
+        const response = await fetch('/api/details');
         const data = await response.json();
         setDetails(data);
         setBride(data.bride);
