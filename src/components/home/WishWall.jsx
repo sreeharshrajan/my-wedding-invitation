@@ -89,7 +89,7 @@ export default function WishWall() {
       </div>
       <div className="container mx-auto px-4 z-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-primary mb-4 text-gray-700"> Wall of Wishes</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary mb-4 text-gray-100"> Wall of Wishes</h2>
           <Button
             onClick={() => setIsModalOpen(true)}
             text="Post Your Wishes"

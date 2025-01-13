@@ -50,27 +50,27 @@ const Card = ({ wish }) => {
     <div className="relative bg-transparent p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-500/30">
       <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent rounded-xl -z-10" />
 
-      <p className="text-slate-200 dark:text-slate-300 italic mb-4 font-aleo text-lg">"{wish.message}"</p>
+      <p className="text-slate-200 dark:text-slate-300 italic mb-4 font-aleo text-base">"{wish.message}"</p>
 
       <div className="flex justify-between items-center">
-        <p className="font-medium text-slate-200 dark:text-slate-300 font-aleo">- {wish.name}</p>
+        <p className="font-medium text-slate-200 text-sm dark:text-slate-300 font-aleo">- {wish.name}</p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center text-sm gap-2">
           <button
             type="button"
             className={`flex items-center gap-1 px-3 py-1 rounded-full 
               ${isLiked
-                ? 'bg-pink-100 text-pink-500'
-              : 'bg-white/20 text-slate-200 dark:bg-black/20 dark:text-slate-400 hover:bg-pink-50 hover:text-pink-500'} 
+                ? 'bg-pink-100/80 text-pink-500'
+              : 'bg-white/20 text-slate-200 dark:bg-black/20 dark:text-slate-400 hover:bg-pink-50/10 hover:text-pink-500'} 
               transition-colors duration-300`}
             onClick={handleLike}
             disabled={isLiked}
           >
-            <span className="text-xl">{isLiked ? '❤️' : '🤍'}</span>
+            <span className="text-base">{isLiked ? '❤️' : '🤍'}</span>
             <span className="font-medium">{likes}</span>
           </button>
 
-          <p className="text-sm text-slate-400 dark:text-slate-300 font-aleo">{timeAgo}</p>
+          <p className="text-sm text-slate-400/50 dark:text-slate-300/50 font-aleo">{timeAgo}</p>
         </div>
       </div>
     </div>
