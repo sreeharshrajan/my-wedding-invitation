@@ -12,30 +12,71 @@ const Schedule = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const items = gsap.utils.toArray(".date-venue-item");
+    // Wait for DOM to be fully loaded
+    const initAnimations = () => {
+      const items = gsap.utils.toArray(".date-venue-item");
+      const mm = gsap.matchMedia();
 
-    items.forEach((item) => {
-      gsap.fromTo(
-        item,
-        {
-          opacity: 0,
-          y: 30
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top center+=100",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
+      // Desktop animations
+      mm.add("(min-width: 768px)", () => {
+        items.forEach((item, index) => {
+          gsap.fromTo(
+            item,
+            {
+              opacity: 0,
+              y: 30
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              delay: index * 0.2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top bottom-=100",
+                end: "bottom top",
+                toggleActions: "play none none reverse",
+                markers: false
+              }
+            }
+          );
+        });
+      });
+
+      // Mobile animations
+      mm.add("(max-width: 767px)", () => {
+        items.forEach((item, index) => {
+          gsap.fromTo(
+            item,
+            {
+              opacity: 0,
+              y: 20
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              delay: index * 0.15,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top bottom-=50",
+                end: "bottom top",
+                toggleActions: "play none none reverse",
+                markers: false
+              }
+            }
+          );
+        });
+      });
+    };
+
+    // Initialize animations after a short delay to ensure proper layout
+    const timeoutId = setTimeout(initAnimations, 100);
 
     return () => {
+      clearTimeout(timeoutId);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
