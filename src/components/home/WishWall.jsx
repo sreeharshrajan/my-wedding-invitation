@@ -77,7 +77,7 @@ export default function WishWall() {
   };
 
   return (
-    <section className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
+    <section id="wishthecouple" className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-serif mb-4 text-gray-700"> Wish the couple</h2>
