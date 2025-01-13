@@ -102,8 +102,6 @@ body {
   /* Enable vertical scroll snapping */
   overflow-y: scroll;
   /* Allow vertical scrolling */
-  height: 100vh;
-  /* Set the container height to the viewport height */
   scroll-behavior: smooth;
   /* Smooth scrolling */
 }
@@ -112,12 +110,4 @@ body {
 section {
   scroll-snap-align: start;
   /* Snap each section to the top */
-  height: 100vh;
-  /* Ensure each section fills the viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
 }
