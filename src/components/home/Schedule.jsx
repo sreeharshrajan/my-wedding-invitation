@@ -44,54 +44,75 @@ const Schedule = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
-      className="min-h-screen py-12 sm:py-20 bg-gradient-to-b from-white via-rose-50 to-white"
+      className="relative min-h-screen py-12 md:py-24 overflow-hidden"
     >
-      <div className="container mx-auto px-4 max-w-5xl">
+      {/* Background layers */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0 bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat"
+          style={{ willChange: 'transform' }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 to-purple-500/20" />
+      </div>
+
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <motion.div
           variants={itemVariants}
-          className="text-center mb-8 sm:mb-16"
+          className="text-center mb-8 md:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl font-primary text-gray-800 mb-3">When and Where</h2>
-          <div className="w-16 sm:w-24 h-0.5 bg-rose-400 mx-auto"></div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary text-white mb-3">When and Where</h2>
+          <div className="w-16 md:w-24 h-0.5 bg-rose-400 mx-auto"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="space-y-6 sm:space-y-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-start">
+          <div className="space-y-6">
             <motion.div
               variants={itemVariants}
-              className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="backdrop-blur-md bg-black/30 p-6 md:p-10 rounded-2xl shadow-2xl 
+                border border-white/10 hover:border-white/20 transition-all duration-300"
             >
-              <div className="flex items-center space-x-4 mb-4 sm:mb-6">
-                <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-rose-500" />
+              <div className="flex items-center space-x-4 mb-5 md:mb-8">
+                <Calendar className="w-5 h-5 md:w-8 md:h-8 text-rose-500" />
                 <div>
-                  <h3 className="text-xl font-aleo text-gray-800">Date</h3>
-                  <p className="text-base font-aleo text-gray-600">{eventDetails.date}</p>
+                  <h3 className="text-lg md:text-2xl font-aleo text-white/90">Date</h3>
+                  <p className="text-sm md:text-lg font-aleo text-white/70">{eventDetails.date}</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4 mb-4 sm:mb-6">
-                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-rose-500" />
+
+              <div className="flex items-center space-x-4 mb-5 md:mb-8">
+                <Clock className="w-5 h-5 md:w-8 md:h-8 text-rose-500" />
                 <div>
-                  <h3 className="text-xl font-aleo text-gray-800">Muhurtham</h3>
-                  <p className="text-base font-aleo text-gray-600">{eventDetails.muhurtham}</p>
+                  <h3 className="text-lg md:text-2xl font-aleo text-white/90">Muhurtham</h3>
+                  <p className="text-sm md:text-lg font-aleo text-white/70">{eventDetails.muhurtham}</p>
                 </div>
               </div>
-              <a href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7" className="flex items-start space-x-4">
-                <MapPin className="w-6 h-6 sm:w-10 sm:h-10 text-rose-500 mt-1" />
+
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7"
+                className="flex items-start space-x-4 group"
+              >
+                <MapPin className="w-6 h-6 md:w-14 md:h-14 text-rose-500 mt-1 group-hover:text-rose-600 transition-colors" />
                 <div>
-                  <h3 className="text-xl font-aleo text-gray-800">Venue</h3>
-                  <p className="text-base font-aleo text-gray-600 leading-relaxed">
+                  <h3 className="text-lg md:text-2xl font-aleo text-white/90">Venue</h3>
+                  <p className="text-sm md:text-lg font-aleo text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
                     {eventDetails.location}
                   </p>
                 </div>
               </a>
             </motion.div>
           </div>
+
           <motion.div
             variants={itemVariants}
-            className="relative mt-4 sm:mt-0"
+            className="relative h-[300px] md:h-[400px]"
           >
-            <div className="absolute inset-0 bg-rose-500 rounded-2xl transform rotate-3 opacity-10"></div>
-            <MapFrame />
+            <div className="absolute inset-0 bg-rose-400/20 rounded-2xl transform rotate-3"></div>
+            <div className="backdrop-blur-lg bg-black/30 p-2 md:p-3 rounded-2xl border border-white/10 h-full">
+              <MapFrame />
+            </div>
           </motion.div>
         </div>
       </div>
