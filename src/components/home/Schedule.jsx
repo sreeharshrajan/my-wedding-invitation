@@ -1,85 +1,33 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import MapFrame from "@/components/home/schedule/MapFrame";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 const Schedule = () => {
-  const sectionRef = useRef(null);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
 
-  useEffect(() => {
-    // Wait for DOM to be fully loaded
-    const initAnimations = () => {
-      const items = gsap.utils.toArray(".date-venue-item");
-      const mm = gsap.matchMedia();
-
-      // Desktop animations
-      mm.add("(min-width: 768px)", () => {
-        items.forEach((item, index) => {
-          gsap.fromTo(
-            item,
-            {
-              opacity: 0,
-              y: 30
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              delay: index * 0.2,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: item,
-                start: "top bottom-=100",
-                end: "bottom top",
-                toggleActions: "play none none reverse",
-                markers: false
-              }
-            }
-          );
-        });
-      });
-
-      // Mobile animations
-      mm.add("(max-width: 767px)", () => {
-        items.forEach((item, index) => {
-          gsap.fromTo(
-            item,
-            {
-              opacity: 0,
-              y: 20
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              delay: index * 0.15,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: item,
-                start: "top bottom-=50",
-                end: "bottom top",
-                toggleActions: "play none none reverse",
-                markers: false
-              }
-            }
-          );
-        });
-      });
-    };
-
-    // Initialize animations after a short delay to ensure proper layout
-    const timeoutId = setTimeout(initAnimations, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
 
   const eventDetails = {
     title: "Wedding Ceremony - Devipriya & Sreeharsh",
@@ -90,20 +38,29 @@ const Schedule = () => {
   };
 
   return (
-    <section
+    <motion.section
       id="schedule"
-      ref={sectionRef}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
       className="min-h-screen py-12 sm:py-20 bg-gradient-to-b from-white via-rose-50 to-white"
     >
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="date-venue-item text-center mb-8 sm:mb-16">
+        <motion.div
+          variants={itemVariants}
+          className="text-center mb-8 sm:mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-serif text-gray-800 mb-3">When and Where</h2>
           <div className="w-16 sm:w-24 h-0.5 bg-rose-400 mx-auto"></div>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
-            <div className="date-venue-item bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <motion.div
+              variants={itemVariants}
+              className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="flex items-center space-x-4 mb-4 sm:mb-6">
                 <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-rose-500" />
                 <div>
@@ -127,15 +84,18 @@ const Schedule = () => {
                   </p>
                 </div>
               </a>
-            </div>
+            </motion.div>
           </div>
-          <div className="date-venue-item relative mt-4 sm:mt-0">
+          <motion.div
+            variants={itemVariants}
+            className="relative mt-4 sm:mt-0"
+          >
             <div className="absolute inset-0 bg-rose-500 rounded-2xl transform rotate-3 opacity-10"></div>
             <MapFrame />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

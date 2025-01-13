@@ -58,39 +58,6 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="hidden flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-32">
-          <div className="text-center">
-            <h2 className="text-xl md:text-2xl text-gray-700 mb-3 font-light">
-              {bride?.name || '\u00A0'}
-            </h2>
-            <p className="text-gray-500 mt-2 text-sm md:text-base font-light tracking-wide">
-              {bride?.address || '\u00A0'}
-            </p>
-            <p className="text-gray-500 mt-2 text-sm md:text-base">
-              {bride?.phone ? (
-                <a href={`tel:${bride.phone}`} className="hover:text-pink-400 transition-colors duration-300 focus:outline-none">
-                  {bride.phone}
-                </a>
-              ) : '\u00A0'}
-            </p>
-          </div>
-
-          <div className="text-center">
-            <h2 className="text-xl md:text-2xl text-gray-700 mb-3 font-light">
-              {groom?.name || '\u00A0'}
-            </h2>
-            <p className="text-gray-500 mt-2 text-sm md:text-base font-light tracking-wide">
-              {groom?.address || '\u00A0'}
-            </p>
-            <p className="text-gray-500 mt-2 text-sm md:text-base">
-              {groom?.phone ? (
-                <a href={`tel:${groom.phone}`} className="hover:text-pink-400 transition-colors duration-300 focus:outline-none">
-                  {groom.phone}
-                </a>
-              ) : '\u00A0'}
-            </p>
-          </div>
-        </div>
       </div>
     </footer>
   );

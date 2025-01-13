@@ -19,6 +19,8 @@ export default function WishWall() {
     name: "",
     email: "",
     message: "",
+    hidden: false,
+    featured: false,
   });
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState("");
