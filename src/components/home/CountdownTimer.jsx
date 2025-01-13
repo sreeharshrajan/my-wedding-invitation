@@ -34,11 +34,11 @@ const CountdownTimer = ({ targetTime }) => {
   }, [targetTime]);
 
   return (
-    <div className="w-auto inline-block px-4 py-3 backdrop-blur-md bg-rose-500/10 rounded-full border border-rose-500/20 shadow-lg">
+    <div className="w-auto inline-block px-4 py-3 backdrop-blur-md bg-slate-50/10 rounded-full border border-slate-50/20 shadow-lg">
       <div className="flex items-center gap-3 sm:gap-4 px-2">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="flex flex-col items-center">
-            <div className=" flex items-center justify-center shadow-sm transition-all duration-300 hover:bg-rose-500/30">
+            <div className=" flex items-center justify-center shadow-sm transition-all duration-300 hover:bg-slate-50/30">
               <span className="text-base sm:text-md font-bold text-white">
                 {value.toString().padStart(2, "0")}
               </span>

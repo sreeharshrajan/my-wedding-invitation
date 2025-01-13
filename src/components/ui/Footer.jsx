@@ -51,7 +51,7 @@ const Footer = () => {
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl text-gray-800 font-primary tracking-wide">
             {/* {details?.title || '\u00A0'} */}
-            D&S
+            {details?.title || '\u00A0'}
           </h1>
           <p className="text-gray-500 text-base md:text-lg mt-3 font-light tracking-wider">
             {details?.number_date || '\u00A0'}
