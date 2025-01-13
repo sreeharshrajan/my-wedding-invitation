@@ -39,7 +39,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="bg-white py-16 h-96 font-aleo relative overflow-hidden"
+      className="bg-white py-16 h-40 font-aleo relative overflow-hidden"
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-5">
@@ -50,14 +50,15 @@ const Footer = () => {
       <div className="container mx-auto px-4 h-full flex flex-col justify-center relative">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl text-gray-800 font-primary tracking-wide">
-            {details?.title || '\u00A0'}
+            {/* {details?.title || '\u00A0'} */}
+            D&S
           </h1>
           <p className="text-gray-500 text-base md:text-lg mt-3 font-light tracking-wider">
             {details?.number_date || '\u00A0'}
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-32">
+        <div className="hidden flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-32">
           <div className="text-center">
             <h2 className="text-xl md:text-2xl text-gray-700 mb-3 font-light">
               {bride?.name || '\u00A0'}

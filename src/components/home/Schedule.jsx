@@ -22,7 +22,7 @@ const Schedule = () => {
   };
 
   return (
-    <section className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
+    <section id="schedule" className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="date-venue-item text-center mb-16">
           <h2 className="text-5xl font-serif text-gray-800 mb-3">When and Where</h2>

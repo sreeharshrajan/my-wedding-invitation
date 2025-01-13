@@ -1,46 +1,80 @@
 import { useEffect, useState } from "react";
-import { useGsapAnimation } from "@/hooks/useGsapAnimation";
+import { gsap } from "gsap";
 import CountdownTimer from "@/components/home/CountdownTimer";
+import { ArrowDown } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const targetDate = new Date("2025-01-19T12:00:00");
 
   useEffect(() => {
-    // Simulate a delay to ensure this isn't the first component loaded
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 1000); // Delay for 1 second
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  useGsapAnimation(".hero-text", {
-    opacity: 0,
-    y: 50,
-    duration: 1.5,
-    ease: "power3.out",
-  });
+  useEffect(() => {
+    if (isLoaded) {
+      // Create animation timeline
+      const tl = gsap.timeline();
+
+      // Animate hero text elements
+      tl.from(".hero-subtitle", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power3.out"
+      })
+        .from(".hero-title", {
+          opacity: 0,
+          y: 50,
+          duration: 1.2,
+          ease: "power3.out"
+        }, "-=0.5"); // Start slightly before previous animation ends
+    }
+  }, [isLoaded]);
 
   if (!isLoaded) {
     return (
-      <section className="h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center" />
+      <section className="relative h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-black/40" />
+      </section>
     );
   }
 
   return (
-    <section className="h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center">
-      <div className="text-center hero-text px-4 sm:px-6 md:px-8">
-        <h5 className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl leading-6 sm:leading-7 md:leading-8 text-white font-serif">
-          We are getting married on January 19, 2025
-        </h5>
+    <section className="relative h-screen bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+      <div className="absolute inset-0 bg-black/40" />
 
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif text-white mt-2 sm:mt-3 md:mt-4  font-primary">
-          Deviprya &amp; Sreeharsh
-        </h2>
-
+      {/* Countdown Timer positioned at top */}
+      <div className="relative z-10 w-full flex justify-center pt-6 sm:pt-8">
         <CountdownTimer targetTime={targetDate} />
       </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 h-full flex items-center justify-center -mt-20">
+        <div className="container mx-auto">
+          <div className="text-center px-4 max-w-4xl mx-auto">
+            <h5 className="hero-subtitle text-xs sm:text-sm md:text-lg text-white font-serif tracking-wide opacity-90">
+              We are getting married on January 19, 2025
+            </h5>
+
+            <h2 className="hero-title font-primary text-white mt-6 md:mt-8 text-3xl leading-tight sm:text-4xl md:text-lg lg:text-6xl xl:text-7xl">
+              Deviprya &amp; Sreeharsh
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      {/* Down Arrow */}
+      <Link href="#schedule" className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="animate-bounce">
+          <ArrowDown className="w-6 h-6 text-white opacity-70 hover:opacity-100 transition-opacity cursor-pointer" />
+        </div>
+      </Link>
     </section>
   );
 };
