@@ -36,11 +36,17 @@ const Quote = () => {
   return (
     <section className="relative flex flex-col lg:flex-row h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br backdrop-blur-lg from-rose-500/10 to-rose-600/10"></div>
+      <div className="absolute inset-0 backdrop-blur blur-sm z-0">
+        <div
+          className="absolute inset-0 bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat opacity-30"
+          style={{ willChange: 'transform' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
 
       {/* Left Image Section */}
       <div className="relative hidden lg:block lg:w-1/2">
-        <div className="absolute inset-0 bg-[url('/images/prewedding/1.jpg')] bg-cover bg-center bg-no-repeat transform hover:scale-105 transition-transform duration-700">
+        <div className="absolute inset-0 bg-[url('/images/prewedding/1.jpg')] bg-cover bg-center">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/40 to-transparent"></div>
         </div>
       </div>
@@ -74,7 +80,7 @@ const Quote = () => {
                 </div>
 
                 {/* Animated arrow */}
-                <div
+                <a href="#wishWall"
                   className={`transform transition-all duration-1000 
                             ${isTypingComplete ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
                 >
@@ -86,7 +92,7 @@ const Quote = () => {
                       <ArrowDown />
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

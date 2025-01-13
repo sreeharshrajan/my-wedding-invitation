@@ -4,17 +4,14 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from "@/lib/firebase";
 
 const Card = ({ wish }) => {
-  // Handle different timestamp formats
   const getFormattedTimeAgo = (timestamp) => {
     if (!timestamp) return "N/A";
 
     try {
-      // If it's a Firebase timestamp with toDate()
       if (timestamp?.toDate) {
         return formatDistanceToNow(timestamp.toDate(), { addSuffix: true });
       }
 
-      // If it's a regular Date object or timestamp number
       const date = typeof timestamp === 'number' ? new Date(timestamp) : timestamp;
       return formatDistanceToNow(date, { addSuffix: true });
     } catch (error) {
@@ -50,13 +47,13 @@ const Card = ({ wish }) => {
   };
 
   return (
-    <div className="relative backdrop-blur-md bg-white/30 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20">
-      <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/30 rounded-xl -z-10" />
+    <div className="relative bg-transparent p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-500/30">
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent rounded-xl -z-10" />
 
-      <p className="text-gray-800 italic mb-4 font-aleo text-lg">"{wish.message}"</p>
+      <p className="text-slate-200 dark:text-slate-300 italic mb-4 font-aleo text-lg">"{wish.message}"</p>
 
       <div className="flex justify-between items-center">
-        <p className="font-medium text-gray-800 font-aleo">- {wish.name}</p>
+        <p className="font-medium text-slate-200 dark:text-slate-300 font-aleo">- {wish.name}</p>
 
         <div className="flex items-center gap-2">
           <button
@@ -64,7 +61,7 @@ const Card = ({ wish }) => {
             className={`flex items-center gap-1 px-3 py-1 rounded-full 
               ${isLiked
                 ? 'bg-pink-100 text-pink-500'
-                : 'bg-white/50 text-gray-600 hover:bg-pink-50 hover:text-pink-500'} 
+              : 'bg-white/20 text-slate-200 dark:bg-black/20 dark:text-slate-400 hover:bg-pink-50 hover:text-pink-500'} 
               transition-colors duration-300`}
             onClick={handleLike}
             disabled={isLiked}
@@ -73,7 +70,7 @@ const Card = ({ wish }) => {
             <span className="font-medium">{likes}</span>
           </button>
 
-          <p className="text-sm text-gray-600 font-aleo">{timeAgo}</p>
+          <p className="text-sm text-slate-400 dark:text-slate-300 font-aleo">{timeAgo}</p>
         </div>
       </div>
     </div>

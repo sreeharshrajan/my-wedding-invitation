@@ -79,8 +79,15 @@ export default function WishWall() {
   };
 
   return (
-    <section id="wishthecouple" className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
-      <div className="container mx-auto px-4">
+    <section id="wishWall" className="relative flex flex-col min-h-screen py-20 bg-gradient-to-b">
+      <div className="absolute inset-0 backdrop-blur blur-xl z-0">
+        <div
+          className="absolute inset-0 bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat bg-clip-border bg-fixed"
+          style={{ willChange: 'transform' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      <div className="container mx-auto px-4 z-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-primary mb-4 text-gray-700"> Wall of Wishes</h2>
           <Button

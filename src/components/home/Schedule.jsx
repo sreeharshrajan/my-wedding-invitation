@@ -52,8 +52,7 @@ const Schedule = () => {
           className="absolute inset-0 bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat"
           style={{ willChange: 'transform' }}
         />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 to-purple-500/20" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <div className="container mx-auto px-4 max-w-5xl relative z-10">

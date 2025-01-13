@@ -39,21 +39,16 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="bg-white py-16 h-40 font-aleo relative overflow-hidden"
+      className=" py-16 h-40 font-aleo relative overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-32 h-32 bg-pink-200 rounded-full -translate-x-16 -translate-y-16" />
-        <div className="absolute bottom-0 right-0 w-40 h-40 bg-pink-200 rounded-full translate-x-20 translate-y-20" />
-      </div>
 
       <div className="container mx-auto px-4 h-full flex flex-col justify-center relative">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl text-gray-800 font-primary tracking-wide">
+          <h1 className="text-3xl md:text-4xl text-rose-600 font-primary tracking-wide">
             {/* {details?.title || '\u00A0'} */}
             {details?.title || '\u00A0'}
           </h1>
-          <p className="text-gray-500 text-base md:text-lg mt-3 font-light tracking-wider">
+          <p className="text-gray-300 text-base md:text-lg mt-3 font-light tracking-wider">
             {details?.number_date || '\u00A0'}
           </p>
         </div>
