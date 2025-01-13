@@ -1,17 +1,44 @@
-"use client";
-
-import { useGsapAnimation } from "@/hooks/useGsapAnimation";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import MapFrame from "@/components/home/schedule/MapFrame";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 const Schedule = () => {
-  useGsapAnimation(".date-venue-item", {
-    opacity: 0,
-    y: 30,
-    stagger: 0.2,
-    duration: 1,
-    ease: "power3.out",
-  });
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const items = gsap.utils.toArray(".date-venue-item");
+
+    items.forEach((item) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top center+=100",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   const eventDetails = {
     title: "Wedding Ceremony - Devipriya & Sreeharsh",
@@ -22,41 +49,46 @@ const Schedule = () => {
   };
 
   return (
-    <section id="schedule" className="min-h-screen py-20 bg-gradient-to-b from-white via-rose-50 to-white">
+    <section
+      id="schedule"
+      ref={sectionRef}
+      className="min-h-screen py-12 sm:py-20 bg-gradient-to-b from-white via-rose-50 to-white"
+    >
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="date-venue-item text-center mb-16">
-          <h2 className="text-5xl font-serif text-gray-800 mb-3">When and Where</h2>
-          <div className="w-24 h-0.5 bg-rose-400 mx-auto"></div>
+        <div className="date-venue-item text-center mb-8 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-800 mb-3">When and Where</h2>
+          <div className="w-16 sm:w-24 h-0.5 bg-rose-400 mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="date-venue-item bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center space-x-4 mb-6">
-                <Calendar className="w-8 h-8 text-rose-500" />
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="date-venue-item bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-center space-x-4 mb-4 sm:mb-6">
+                <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-rose-500" />
                 <div>
-                  <h3 className="text-2xl font-serif text-gray-800">Date</h3>
-                  <p className="text-lg text-gray-600">{eventDetails.date}</p>
+                  <h3 className="text-xl sm:text-2xl font-serif text-gray-800">Date</h3>
+                  <p className="text-base sm:text-lg text-gray-600">{eventDetails.date}</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4 mb-6">
-                <Clock className="w-8 h-8 text-rose-500" />
+              <div className="flex items-center space-x-4 mb-4 sm:mb-6">
+                <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-rose-500" />
                 <div>
-                  <h3 className="text-2xl font-serif text-gray-800">Muhurtham</h3>
-                  <p className="text-lg text-gray-600">{eventDetails.muhurtham}</p>
+                  <h3 className="text-xl sm:text-2xl font-serif text-gray-800">Muhurtham</h3>
+                  <p className="text-base sm:text-lg text-gray-600">{eventDetails.muhurtham}</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <MapPin className="w-14 h-14 text-rose-500" />
+              <div className="flex items-start space-x-4">
+                <MapPin className="w-16 h-16 sm:w-18 sm:h-18 text-rose-500 mt-1" />
                 <div>
-                  <h3 className="text-2xl font-serif text-gray-800">Venue</h3>
-                  <p className="text-lg text-gray-600">{eventDetails.location}</p>
+                  <h3 className="text-xl sm:text-2xl font-serif text-gray-800">Venue</h3>
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                    {eventDetails.location}
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
-          <div className="date-venue-item relative">
+          <div className="date-venue-item relative mt-4 sm:mt-0">
             <div className="absolute inset-0 bg-rose-500 rounded-2xl transform rotate-3 opacity-10"></div>
             <MapFrame />
           </div>
@@ -67,4 +99,3 @@ const Schedule = () => {
 };
 
 export default Schedule;
-
