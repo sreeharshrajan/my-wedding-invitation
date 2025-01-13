@@ -39,14 +39,14 @@ const Hero = () => {
 
   if (!isLoaded) {
     return (
-      <section className="relative h-[calc(100vh-10vh)] flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+      <section className="relative h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-black/40" />
       </section>
     );
   }
 
   return (
-    <section className="relative h-[calc(100vh-10vh)] bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+    <section className="relative h-screen bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Countdown Timer positioned at top */}
@@ -70,7 +70,7 @@ const Hero = () => {
       </div>
 
       {/* Down Arrow */}
-      <Link href="#schedule" className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <Link href="#schedule" className="absolute bottom-14 left-1/2 transform -translate-x-1/2 z-10">
         <div className="animate-bounce">
           <ArrowDown className="w-6 h-6 text-white opacity-70 hover:opacity-100 transition-opacity cursor-pointer" />
         </div>
