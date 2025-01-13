@@ -30,7 +30,56 @@ export const Slider = () => {
       description: "City of eternal love",
     },
     {
+      url: "/images/prewedding/3.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/4.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
       url: "/images/prewedding/5.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/10.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/6.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/7.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/8.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/9.jpg",
       alt: "Pre-wedding photo 3",
       title: "VENICE",
       subtitle: "ITALY",
@@ -198,7 +247,7 @@ export const Slider = () => {
         </button>
         <button
           onClick={() => handleSwap("right")}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-4 transition-all duration-200 z-10"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-4 transition-all duration-200 z-50"
           aria-label="Next slide"
         >
           <ChevronRight className="w-6 h-6 text-white" />
