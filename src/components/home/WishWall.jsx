@@ -41,7 +41,7 @@ export default function WishWall() {
         ...doc.data(),
         createdAt: doc.data().createdAt?.toDate(),
       }));
-      setWishes(wishesData);
+      setWishes(wishesData.filter((wish) => !wish.hidden));
     } catch (error) {
       console.error("Error fetching wishes:", error);
     }
