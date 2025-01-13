@@ -39,14 +39,14 @@ const Hero = () => {
 
   if (!isLoaded) {
     return (
-      <section className="relative h-screen flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+      <section className="relative h-[calc(100vh-10vh)] flex items-center justify-center bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-black/40" />
       </section>
     );
   }
 
   return (
-    <section className="relative h-screen bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+    <section className="relative h-[calc(100vh-10vh)] bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Countdown Timer positioned at top */}
@@ -55,14 +55,14 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 h-full flex items-center justify-center -mt-20">
+      <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto">
           <div className="text-center px-4 max-w-4xl mx-auto">
             <h5 className="hero-subtitle text-xs sm:text-sm md:text-lg text-white font-serif tracking-wide opacity-90">
               We are getting married on January 19, 2025
             </h5>
 
-            <h2 className="hero-title font-primary text-white mt-6 md:mt-8 text-3xl leading-tight sm:text-4xl md:text-lg lg:text-6xl xl:text-7xl">
+            <h2 className="hero-title font-primary text-white mt-4 md:mt-6 text-4xl leading-tight sm:text-4xl md:text-lg lg:text-6xl xl:text-7xl">
               Deviprya &amp; Sreeharsh
             </h2>
           </div>

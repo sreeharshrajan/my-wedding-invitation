@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Quote />
       <Schedule />
+      <Quote />
       <Slider />
       <WishWall />
       <Footer />
