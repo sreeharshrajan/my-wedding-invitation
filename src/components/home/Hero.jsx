@@ -58,7 +58,7 @@ const Hero = () => {
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto">
           <div className="text-center px-4 max-w-4xl mx-auto">
-            <h5 className="hero-subtitle text-xs sm:text-sm md:text-lg text-white font-serif tracking-wide opacity-90">
+            <h5 className="hero-subtitle font-aleo text-xs sm:text-sm md:text-lg text-white tracking-wide opacity-90">
               We are getting married on January 19, 2025
             </h5>
 

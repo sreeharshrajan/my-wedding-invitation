@@ -42,12 +42,12 @@ const Quote = () => {
           <div className="max-w-lg mx-auto">
             <div className="relative p-8 text-center">
               <div className="flex flex-col items-center">
-                <div className="px-4 text-sm font-medium text-rose-500 py-2 border border-rose-300 rounded-full tracking-wider mb-4 hover:border-rose-400 transition-colors duration-300">
+                <div className="px-4 text-sm font-aleo font-medium text-rose-500 py-2 border border-rose-300 rounded-full tracking-wider mb-4 hover:border-rose-400 transition-colors duration-300">
                   #SreeGotDevified
                 </div>
 
                 <div className="relative min-h-[120px] flex items-center justify-center">
-                  <h1 className="text-3xl md:text-4xl font-serif text-gray-800 leading-relaxed">
+                  <h1 className="text-3xl md:text-4xl font-primary text-gray-800 leading-relaxed">
                     {text}
                     <span className={`inline-block w-0.5 h-6 bg-rose-500 ml-1 -mb-1 transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
                   </h1>

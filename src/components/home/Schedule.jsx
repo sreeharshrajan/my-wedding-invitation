@@ -51,7 +51,7 @@ const Schedule = () => {
           variants={itemVariants}
           className="text-center mb-8 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-serif text-gray-800 mb-3">When and Where</h2>
+          <h2 className="text-3xl sm:text-4xl font-primary text-gray-800 mb-3">When and Where</h2>
           <div className="w-16 sm:w-24 h-0.5 bg-rose-400 mx-auto"></div>
         </motion.div>
 
@@ -64,22 +64,22 @@ const Schedule = () => {
               <div className="flex items-center space-x-4 mb-4 sm:mb-6">
                 <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-rose-500" />
                 <div>
-                  <h3 className="text-xl font-serif text-gray-800">Date</h3>
-                  <p className="text-base text-gray-600">{eventDetails.date}</p>
+                  <h3 className="text-xl font-aleo text-gray-800">Date</h3>
+                  <p className="text-base font-aleo text-gray-600">{eventDetails.date}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4 mb-4 sm:mb-6">
                 <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-rose-500" />
                 <div>
-                  <h3 className="text-xl font-serif text-gray-800">Muhurtham</h3>
-                  <p className="text-base text-gray-600">{eventDetails.muhurtham}</p>
+                  <h3 className="text-xl font-aleo text-gray-800">Muhurtham</h3>
+                  <p className="text-base font-aleo text-gray-600">{eventDetails.muhurtham}</p>
                 </div>
               </div>
               <a href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7" className="flex items-start space-x-4">
-                <MapPin className="w-12 h-12 sm:w-10 sm:h-10 text-rose-500 mt-1" />
+                <MapPin className="w-6 h-6 sm:w-10 sm:h-10 text-rose-500 mt-1" />
                 <div>
-                  <h3 className="text-xl font-serif text-gray-800">Venue</h3>
-                  <p className="text-base text-gray-600 leading-relaxed">
+                  <h3 className="text-xl font-aleo text-gray-800">Venue</h3>
+                  <p className="text-base font-aleo text-gray-600 leading-relaxed">
                     {eventDetails.location}
                   </p>
                 </div>

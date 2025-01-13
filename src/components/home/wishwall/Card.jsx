@@ -8,10 +8,10 @@ const Card = ({ wish }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
-      <p className="text-gray-600 italic mb-4">"{wish.message}"</p>
+      <p className="text-gray-600 italic mb-4 font-aleo">"{wish.message}"</p>
       <div className="flex justify-between items-center">
-        <p className="font-medium text-gray-800">- {wish.name}</p>
-        <p className="text-sm text-gray-500">{timeAgo}</p>
+        <p className="font-medium text-gray-800 font-aleo">- {wish.name}</p>
+        <p className="text-sm text-gray-500 font-aleo">{timeAgo}</p>
       </div>
     </div>
   );

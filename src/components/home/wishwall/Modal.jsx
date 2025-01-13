@@ -48,7 +48,7 @@ const Modal = ({
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             ref={modalRef}
-            className="bg-white p-8 rounded-lg shadow-xl max-w-xl w-full mx-4 relative border border-gray-200 flex flex-col"
+            className="bg-white p-8 rounded-lg shadow-xl max-w-xl w-full mx-4 relative border border-gray-200 flex flex-col font-aleo"
           >
             <button
               onClick={() => setIsModalOpen(false)}
@@ -57,7 +57,7 @@ const Modal = ({
               <X size={24} />
             </button>
 
-            <h3 className="text-3xl font-serif text-center mb-8 text-gray-900">
+            <h3 className="text-3xl text-center mb-8 text-gray-900">
               Add Your Wishes to the Wall
             </h3>
 

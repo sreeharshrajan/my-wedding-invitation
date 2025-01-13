@@ -39,11 +39,11 @@ const CountdownTimer = ({ targetTime }) => {
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="flex flex-col items-center">
             <div className=" flex items-center justify-center shadow-sm transition-all duration-300 hover:bg-slate-50/30">
-              <span className="text-base sm:text-md font-bold text-white">
+              <span className="text-base sm:text-md font-bold font-aleo text-white">
                 {value.toString().padStart(2, "0")}
               </span>
             </div>
-            <span className="text-[10px] uppercase tracking-wider text-white/80 font-medium">
+            <span className="text-[10px] uppercase tracking-wider text-white/80 font-medium font-aleo">
               {unit}
             </span>
           </div>
