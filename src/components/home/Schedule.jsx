@@ -2,24 +2,27 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Calendar, MapPin, Clock } from "lucide-react";
-import MapFrame from "@/components/home/schedule/MapFrame";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const Schedule = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const items = gsap.utils.toArray(".date-venue-item");
+    // Ensure the DOM is loaded
+    if (!sectionRef.current) return;
 
-    items.forEach((item) => {
-      gsap.fromTo(
+    // Get all items to animate
+    const items = document.querySelectorAll(".date-venue-item");
+
+    // Create animations
+    const animations = gsap.utils.toArray(items).map((item) => {
+      return gsap.fromTo(
         item,
         {
           opacity: 0,
-          y: 30
+          y: 30,
         },
         {
           opacity: 1,
@@ -27,16 +30,23 @@ const Schedule = () => {
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top center+=100",
-            toggleActions: "play none none reverse"
+            trigger: item, // Changed to individual items
+            start: "top bottom-=100",
+            end: "bottom top",
+            toggleActions: "play none none reverse",
+            markers: false // Set to true for debugging
           }
         }
       );
     });
 
+    // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      animations.forEach(anim => {
+        if (anim.scrollTrigger) {
+          anim.scrollTrigger.kill();
+        }
+      });
     };
   }, []);
 
@@ -49,48 +59,43 @@ const Schedule = () => {
   };
 
   return (
-    <section
-      id="schedule"
-      ref={sectionRef}
-      className="min-h-screen py-12 sm:py-20 bg-gradient-to-b from-white via-rose-50 to-white"
-    >
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="date-venue-item text-center mb-8 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-800 mb-3">When and Where</h2>
-          <div className="w-16 sm:w-24 h-0.5 bg-rose-400 mx-auto"></div>
-        </div>
+    <section ref={sectionRef} className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          When and Where
+        </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="space-y-6 sm:space-y-8">
-            <div className="date-venue-item bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center space-x-4 mb-4 sm:mb-6">
-                <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-rose-500" />
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-gray-800">Date</h3>
-                  <p className="text-base sm:text-lg text-gray-600">{eventDetails.date}</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4 mb-4 sm:mb-6">
-                <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-rose-500" />
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-gray-800">Muhurtham</h3>
-                  <p className="text-base sm:text-lg text-gray-600">{eventDetails.muhurtham}</p>
-                </div>
-              </div>
+        <div className="max-w-3xl mx-auto space-y-8">
+          <div className="grid gap-8 md:grid-cols-1">
+            <div className="date-venue-item bg-gray-50 rounded-lg p-6 shadow-sm">
               <div className="flex items-start space-x-4">
-                <MapPin className="w-16 h-16 sm:w-18 sm:h-18 text-rose-500 mt-1" />
+                <Calendar className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-gray-800">Venue</h3>
-                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                    {eventDetails.location}
-                  </p>
+                  <h3 className="font-semibold text-lg mb-2">Date</h3>
+                  <p>{eventDetails.date}</p>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="date-venue-item relative mt-4 sm:mt-0">
-            <div className="absolute inset-0 bg-rose-500 rounded-2xl transform rotate-3 opacity-10"></div>
-            <MapFrame />
+
+            <div className="date-venue-item bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-start space-x-4">
+                <Clock className="w-6 h-6 text-primary mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Muhurtham</h3>
+                  <p>{eventDetails.muhurtham}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="date-venue-item bg-gray-50 rounded-lg p-6 shadow-sm">
+              <div className="flex items-start space-x-4">
+                <MapPin className="w-6 h-6 text-primary mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Venue</h3>
+                  <p>{eventDetails.location}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
