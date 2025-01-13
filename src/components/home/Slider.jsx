@@ -37,7 +37,14 @@ export const Slider = () => {
       description: "Where romance meets history",
     },
     {
-      url: "/images/prewedding/4.jpg",
+      url: "/images/prewedding/12.jpg",
+      alt: "Pre-wedding photo 3",
+      title: "VENICE",
+      subtitle: "ITALY",
+      description: "Where romance meets history",
+    },
+    {
+      url: "/images/prewedding/11.jpg",
       alt: "Pre-wedding photo 3",
       title: "VENICE",
       subtitle: "ITALY",

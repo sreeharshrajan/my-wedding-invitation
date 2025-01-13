@@ -96,7 +96,6 @@ body {
   background-color: transparent;
 }
 
-/* Set up the container for scroll snapping */
 body {
   scroll-snap-type: y mandatory;
   /* Enable vertical scroll snapping */
@@ -106,8 +105,6 @@ body {
   /* Smooth scrolling */
 }
 
-/* Apply snapping to all <section> tags */
 section {
   scroll-snap-align: start;
-  /* Snap each section to the top */
 }

@@ -45,7 +45,7 @@ const Form = ({ formData, handleChange, handleSubmit, loading }) => {
         disabled={loading}
         className="w-full bg-rose-600 text-white py-3 rounded hover:bg-rose-700 transition disabled:opacity-50"
       >
-        {loading ? "Sending..." : "Send Your Wish"}
+        {loading ? "Posting..." : "Post Your Wish"}
       </button>
     </form>
   );

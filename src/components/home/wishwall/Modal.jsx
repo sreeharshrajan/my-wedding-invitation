@@ -58,7 +58,7 @@ const Modal = ({
             </button>
 
             <h3 className="text-3xl font-serif text-center mb-8 text-gray-900">
-              Send Your Wishes
+              Add Your Wishes to the Wall
             </h3>
 
             {feedback && (
