@@ -74,16 +74,16 @@ const Schedule = () => {
               <div className="flex items-center space-x-4 mb-5 md:mb-8">
                 <Calendar className="w-5 h-5 md:w-8 md:h-8 text-rose-500" />
                 <div>
-                  <h3 className="text-lg md:text-2xl font-aleo text-white/90">Date</h3>
-                  <p className="text-sm md:text-md mt-1 font-aleo text-white/70">{eventDetails.date}</p>
+                  <h3 className="text-sm md:text-md font-aleo text-white/90">Date</h3>
+                  <p className="text-lg md:text-2xl mt-1 font-aleo text-white/70">{eventDetails.date}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4 mb-5 md:mb-8">
                 <Clock className="w-5 h-5 md:w-8 md:h-8 text-rose-500" />
                 <div>
-                  <h3 className="text-lg md:text-2xl font-aleo text-white/90">Muhurtham</h3>
-                  <p className="text-sm md:text-md mt-1 font-aleo text-white/70">{eventDetails.muhurtham}</p>
+                  <h3 className="text-sm md:text-md font-aleo text-white/90">Muhurtham</h3>
+                  <p className="text-lg md:text-2xl mt-1 font-aleo text-white/70">{eventDetails.muhurtham}</p>
                 </div>
               </div>
 
@@ -97,8 +97,8 @@ const Schedule = () => {
                   <MapPin className="w-6 h-6 md:w-8 md:h-8 text-rose-500 group-hover:text-rose-600 transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-2xl font-aleo text-white/90">Venue</h3>
-                  <p className="text-sm md:text-md mt-1 font-aleo text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
+                  <h3 className="text-sm md:text-md font-aleo text-white/90">Venue</h3>
+                  <p className="text-lg mt-1 font-aleo text-white/70 leading-normal group-hover:text-white/80 transition-colors">
                     {eventDetails.location}
                   </p>
                 </div>
