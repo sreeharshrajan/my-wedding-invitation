@@ -66,7 +66,7 @@ export default function Page() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-3">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function Page() {
           Back to all wishes
         </button>
 
-        <div className="backdrop-blur-xl bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg relative overflow-hidden">
+        <div className="backdrop-blur-xl bg-white/10 p-4 rounded-xl border border-white/20 shadow-lg relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-pink-100/20 to-pink-300/30 rounded-xl opacity-40" />
 
           <div className="relative z-10">
