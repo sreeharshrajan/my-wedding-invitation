@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 
 const useBackgroundMusic = (audioUrl) => {
   const [audio, setAudio] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     setMounted(true);
