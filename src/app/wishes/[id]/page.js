@@ -65,8 +65,10 @@ export default function Page() {
     { addSuffix: true }
   );
 
+  const baseUrl = window.location.origin;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-3">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -74,8 +76,8 @@ export default function Page() {
         className="max-w-3xl mx-auto"
       >
         <button
-          onClick={() => router.push("/")}
-          className="flex items-center gap-2 text-pink-300 hover:text-pink-400 transition-colors mb-8"
+          onClick={() => router.push(`${baseUrl}#wishWall`)}
+          className="flex items-center gap-2 mt-6 text-pink-300 hover:text-pink-400 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to all wishes
@@ -90,13 +92,13 @@ export default function Page() {
                 {wish.message}
               </pre>
             ) : (
-              <p className="text-white/90 italic mb-6 font-aleo text-xl leading-relaxed">
+                <p className="text-white/90 italic mb-6 font-aleo text-lg leading-relaxed">
                 &ldquo;{wish.message}&rdquo;
               </p>
             )}
 
             <div className="flex justify-between items-center">
-              <p className="font-medium text-white/90 font-aleo text-lg">- {wish.name}</p>
+              <p className="font-medium text-white/90 font-aleo text-base">- {wish.name}</p>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 bg-pink-100/20 text-pink-300 px-4 py-2 rounded-full">
                   <span className="text-xl">❤️</span>
