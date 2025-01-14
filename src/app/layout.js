@@ -4,6 +4,7 @@ import { Aleo } from "next/font/google";
 import Loader from "@/components/ui/Loader";
 import { LoaderProvider } from "@/providers/LoaderProvider";
 import { NavigationLoader } from "@/components/ui/NavigationLoader";
+import MusicControl from "@/components/ui/MusicControl";
 
 const aleo = Aleo({
   weight: ["400", "500", "700"],
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
           <Suspense fallback={<Loader />}>
             <NavigationLoader />
             {children}
+            <MusicControl />
           </Suspense>
         </LoaderProvider>
       </body>
