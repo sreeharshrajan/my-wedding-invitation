@@ -47,14 +47,14 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Countdown Timer */}
-      <div className="relative z-10 w-full flex justify-center py-8 md:py-12 lg:py-16">
+      <div className="relative z-10 w-full flex justify-center py-6 lg:py-10">
         <CountdownTimer targetTime={targetDate} />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-200px)]">
+      <div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-280px)]">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto space-y-6 md:space-y-8 lg:space-y-10">
+          <div className="text-center max-w-4xl mx-auto space-y-2 md:space-y-6">
             <h5 className="hero-subtitle font-aleo text-white tracking-wide opacity-90 text-sm md:text-base lg:text-lg">
               We are getting married on January 19, 2025
             </h5>
@@ -67,12 +67,12 @@ const Hero = () => {
       </div>
 
       {/* Down Arrow */}
-      <div className="relative z-10 flex justify-center pb-12 md:pb-16 lg:pb-20">
+      <div className="relative z-10 flex justify-center">
         <Link
           href="#schedule"
           className="inline-block animate-bounce hover:opacity-100 transition-opacity"
         >
-          <ArrowDown className="w-6 h-6 md:w-8 md:h-8 text-white opacity-70" />
+          <ArrowDown size={30} className=" text-white opacity-70" />
         </Link>
       </div>
     </section>

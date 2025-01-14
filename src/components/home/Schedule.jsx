@@ -75,7 +75,7 @@ const Schedule = () => {
                 <Calendar className="w-5 h-5 md:w-8 md:h-8 text-rose-500" />
                 <div>
                   <h3 className="text-lg md:text-2xl font-aleo text-white/90">Date</h3>
-                  <p className="text-sm md:text-lg font-aleo text-white/70">{eventDetails.date}</p>
+                  <p className="text-sm md:text-md mt-1 font-aleo text-white/70">{eventDetails.date}</p>
                 </div>
               </div>
 
@@ -83,7 +83,7 @@ const Schedule = () => {
                 <Clock className="w-5 h-5 md:w-8 md:h-8 text-rose-500" />
                 <div>
                   <h3 className="text-lg md:text-2xl font-aleo text-white/90">Muhurtham</h3>
-                  <p className="text-sm md:text-lg font-aleo text-white/70">{eventDetails.muhurtham}</p>
+                  <p className="text-sm md:text-md mt-1 font-aleo text-white/70">{eventDetails.muhurtham}</p>
                 </div>
               </div>
 
@@ -93,12 +93,12 @@ const Schedule = () => {
                 href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7"
                 className="flex items-center space-x-4 group"
               >
-                <div className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-rose-500/20">
+                <div className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full ">
                   <MapPin className="w-6 h-6 md:w-8 md:h-8 text-rose-500 group-hover:text-rose-600 transition-colors" />
                 </div>
                 <div>
                   <h3 className="text-lg md:text-2xl font-aleo text-white/90">Venue</h3>
-                  <p className="text-sm md:text-lg font-aleo text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
+                  <p className="text-sm md:text-md mt-1 font-aleo text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
                     {eventDetails.location}
                   </p>
                 </div>
@@ -111,7 +111,7 @@ const Schedule = () => {
             variants={itemVariants}
             className="relative h-[300px] md:h-[400px]"
           >
-            <div className="absolute inset-0 bg-rose-400/20 rounded-2xl transform rotate-3"></div>
+            <div className="absolute inset-0 bg-black/20 rounded-2xl transform rotate-3"></div>
             <div className="backdrop-blur-lg bg-black/30 p-2 md:p-3 rounded-2xl border border-white/10 h-full">
               <MapFrame />
             </div>

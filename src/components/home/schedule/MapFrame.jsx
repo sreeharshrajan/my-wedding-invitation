@@ -41,7 +41,7 @@ const MapFrame = memo(() => {
 
       {/* Glassmorphism overlay for buttons */}
       <div
-        className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-3 
+        className={`absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex gap-3 
                    transition-opacity duration-300 ${isControlsVisible ? "opacity-100" : "opacity-0 group-hover:opacity-100"
           }`}
         role="group"
@@ -51,7 +51,7 @@ const MapFrame = memo(() => {
           <a
             href={googleMapsUrl}
             target="_blank"
-            className="backdrop-blur-md bg-rose-500/80 hover:bg-rose-500/80 border border-white/20
+            className="bg-rose-500 hover:bg-rose-500/80 border border-white
                      text-white px-4 py-2 rounded-xl text-sm font-medium shadow-lg
                      transition-all duration-300 flex items-center gap-2 hover:scale-105"
             aria-label="Get directions using Google Maps"
@@ -69,7 +69,7 @@ const MapFrame = memo(() => {
             href={appleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="backdrop-blur-md bg-rose-500/80 hover:bg-rose-500/80 border border-white/20
+            className="bg-rose-500 hover:bg-rose-500/80 border border-white
                      text-white px-4 py-2 rounded-xl text-sm font-medium shadow-lg
                      transition-all duration-300 flex items-center gap-2 hover:scale-105"
             aria-label="Get directions using Apple Maps"
