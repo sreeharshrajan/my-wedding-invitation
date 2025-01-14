@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 
 const MapFrame = memo(() => {
   const [isIOS, setIsIOS] = useState(false);
+  const [isControlsVisible, setIsControlsVisible] = useState(false);
 
   useEffect(() => {
     // Detect iOS device
@@ -12,6 +13,10 @@ const MapFrame = memo(() => {
     setIsIOS(checkIsIOS());
   }, []);
 
+  const toggleControlsVisibility = () => {
+    setIsControlsVisible((prev) => !prev);
+  };
+
   // Map URLs and venue details
   const venue = "Vellur Sree Kudakkath Kottanacheri Devaswom Auditorium";
   const coordinates = "12.156456,75.204659";
@@ -19,7 +24,10 @@ const MapFrame = memo(() => {
   const appleMapsUrl = `maps://maps.apple.com/?daddr=${coordinates}&dirflag=d`;
 
   return (
-    <div className="relative w-full h-full group">
+    <div
+      className="relative w-full h-full group"
+      onClick={toggleControlsVisibility} // Toggle visibility on tap/click
+    >
       {/* Map iframe */}
       <iframe
         title="Map showing location of Vellur Sree Kudakkath Kottanacheri Devaswom Auditorium"
@@ -33,8 +41,9 @@ const MapFrame = memo(() => {
 
       {/* Glassmorphism overlay for buttons */}
       <div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-3 
-                   opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-3 
+                   transition-opacity duration-300 ${isControlsVisible ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          }`}
         role="group"
         aria-label="Open in maps application"
       >
