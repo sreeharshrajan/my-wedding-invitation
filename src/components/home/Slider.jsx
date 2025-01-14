@@ -202,7 +202,7 @@ export const Slider = () => {
                 index
               )}`}
             >
-              <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl transform-gpu">
+              <div className="relative w-full h-full rounded-xl overflow-hidden shadow-sm transform-gpu">
                 <Image
                   src={slide.url}
                   alt={slide.alt}
