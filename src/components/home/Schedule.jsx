@@ -91,9 +91,11 @@ const Schedule = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://maps.app.goo.gl/i12cpiwrsbJSGE9d7"
-                className="flex items-start space-x-4 group"
+                className="flex items-center space-x-4 group"
               >
-                <MapPin className="w-6 h-6 md:w-14 md:h-14 text-rose-500 mt-1 group-hover:text-rose-600 transition-colors" />
+                <div className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-rose-500/20">
+                  <MapPin className="w-6 h-6 md:w-8 md:h-8 text-rose-500 group-hover:text-rose-600 transition-colors" />
+                </div>
                 <div>
                   <h3 className="text-lg md:text-2xl font-aleo text-white/90">Venue</h3>
                   <p className="text-sm md:text-lg font-aleo text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
@@ -101,6 +103,7 @@ const Schedule = () => {
                   </p>
                 </div>
               </a>
+
             </motion.div>
           </div>
 

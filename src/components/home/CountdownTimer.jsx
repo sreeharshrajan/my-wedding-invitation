@@ -38,7 +38,7 @@ const CountdownTimer = ({ targetTime }) => {
       <div className="flex items-center gap-3 sm:gap-4 px-2">
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="flex flex-col items-center">
-            <div className=" flex items-center justify-center shadow-sm transition-all duration-300 hover:bg-slate-50/30">
+            <div className=" flex items-center justify-center shadow-sm transition-all duration-300">
               <span className="text-base sm:text-md font-bold font-aleo text-white">
                 {value.toString().padStart(2, "0")}
               </span>
