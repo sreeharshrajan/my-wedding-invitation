@@ -76,7 +76,7 @@ const Wall = ({ wishes }) => {
       zIndex: 1,
       x: 0,
       opacity: 1
-    }),
+    },
     exit: (direction) => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
