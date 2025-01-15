@@ -87,10 +87,18 @@ const Wall = ({ wishes }) => {
   const swipeProps = {
     drag: "x",
     dragElastic: 1,
+    dragConstraints: {
+      left: page === totalPages - 1 ? 0 : -100,
+      right: page === 0 ? 0 : 100
+    },
     onDragEnd: (e, { offset, velocity }) => {
       const swipe = swipeConfidenceCheck(offset.x, velocity.x);
       if (swipe) {
-        paginate(offset.x < 0 ? 1 : -1);
+        // Only paginate if not at the edges
+        const direction = offset.x < 0 ? 1 : -1;
+        if ((direction === 1 && page < totalPages - 1) || (direction === -1 && page > 0)) {
+          paginate(direction);
+        }
       }
     }
   };
@@ -172,7 +180,7 @@ const Wall = ({ wishes }) => {
             key={i}
             onClick={() => setPage([i, i > page ? 1 : -1])}
             className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors
-              ${i === page ? 'bg-blue-500' : 'bg-gray-600 hover:bg-gray-500'}`}
+              ${i === page ? 'bg-rose-500' : 'bg-gray-600 hover:bg-gray-500'}`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
           />
