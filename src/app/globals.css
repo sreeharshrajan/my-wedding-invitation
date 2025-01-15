@@ -17,7 +17,7 @@
 /* Base styles */
 html {
   height: 100%;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 /* Hide scrollbars across browsers while maintaining functionality */
-* {
+/* * {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -47,7 +47,7 @@ body {
   width: 0;
   display: none;
   background: transparent;
-}
+} */
 
 /* Section snap alignment */
 section {
@@ -101,4 +101,18 @@ section {
 /* Music control */
 .music-control {
   z-index: 1000;
+}
+::-webkit-scrollbar {
+  background: transparent;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transition: background-color 0.3s ease-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }

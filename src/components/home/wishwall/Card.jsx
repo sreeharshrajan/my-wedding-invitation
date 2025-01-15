@@ -114,7 +114,7 @@ const WishCard = ({ wish }) => {
           )}
 
           <div className="flex justify-between items-center">
-            <p className="font-medium text-white/90 font-aleo">- {wish.name}</p>
+            <p className="font-medium text-white/90 font-aleo">- {wish.name.charAt(0).toUpperCase() + wish.name.slice(1)}</p>
 
             <div className="flex items-center gap-2">
               <button
