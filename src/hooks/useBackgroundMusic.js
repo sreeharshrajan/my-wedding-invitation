@@ -1,80 +1,78 @@
+// hooks/useBackgroundMusic.js
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useBackgroundMusic = (audioUrl) => {
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+
+  // Force play function with multiple attempts
+  const forcePlay = useCallback(async (audioElement) => {
+    try {
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        await playPromise;
+        setIsPlaying(true);
+      }
+    } catch (error) {
+      console.log('Playback failed:', error);
+      // If failed, try playing on next user interaction
+      const playOnInteraction = () => {
+        audioElement.play().then(() => {
+          setIsPlaying(true);
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('touchstart', playOnInteraction);
+        }).catch(console.error);
+      };
+
+      document.addEventListener('click', playOnInteraction);
+      document.addEventListener('touchstart', playOnInteraction);
+    }
+  }, []);
 
   useEffect(() => {
     setMounted(true);
     const audioElement = new Audio(audioUrl);
     audioElement.loop = true;
+    audioElement.volume = 0.5; // Set initial volume
     setAudio(audioElement);
 
-    // Attempt autoplay
-    const attemptAutoplay = async () => {
-      try {
-        await audioElement.play();
-        setIsPlaying(true);
-        setAutoplayBlocked(false);
-      } catch (error) {
-        console.log('Autoplay blocked:', error);
-        setAutoplayBlocked(true);
-        setIsPlaying(false);
+    // Try to play immediately
+    forcePlay(audioElement);
+
+    // Also try to play on window focus
+    const handleFocus = () => {
+      if (!isPlaying) {
+        forcePlay(audioElement);
       }
     };
-
-    attemptAutoplay();
+    window.addEventListener('focus', handleFocus);
 
     return () => {
       audioElement.pause();
       audioElement.src = '';
+      window.removeEventListener('focus', handleFocus);
     };
-  }, [audioUrl]);
+  }, [audioUrl, forcePlay, isPlaying]);
 
-  const startMusic = async () => {
-    if (!audio) return;
-
-    try {
-      await audio.play();
-      setIsPlaying(true);
-      setAutoplayBlocked(false);
-    } catch (error) {
-      console.log('Audio playback error:', error);
-      setIsPlaying(false);
-    }
-  };
-
-  const toggleMusic = () => {
+  const toggleMusic = useCallback(() => {
     if (!audio) return;
 
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
     } else {
-      startMusic();
+      forcePlay(audio);
     }
-  };
+  }, [audio, isPlaying, forcePlay]);
 
-  // Don't render anything until mounted on client
   if (!mounted) {
-    return {
-      isPlaying: false,
-      autoplayBlocked: false,
-      toggleMusic: () => { },
-      startMusic: () => { }
-    };
+    return { isPlaying: false, toggleMusic: () => { } };
   }
 
-  return {
-    isPlaying,
-    autoplayBlocked,
-    toggleMusic,
-    startMusic
-  };
+  return { isPlaying, toggleMusic };
 };
 
 export default useBackgroundMusic;
