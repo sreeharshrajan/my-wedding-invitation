@@ -25,7 +25,30 @@ END:VCALENDAR`,
 
 import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { formatDistanceToNow } from "date-fns";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
+
+// Separate utility functions for better organization
+export const isCodeContent = (message) => {
+  const codeIndicators = ["void", "{", ";", "function", "class", "const", "let", "var"];
+  return codeIndicators.some(indicator => message.includes(indicator));
+};
+
+export const formatTimeAgo = (timestamp) => {
+  if (!timestamp) return "N/A";
+
+  try {
+    const date = timestamp?.toDate
+      ? timestamp.toDate()
+      : typeof timestamp === "number"
+        ? new Date(timestamp)
+        : timestamp;
+    return formatDistanceToNow(date, { addSuffix: true });
+  } catch (error) {
+    console.error("Error formatting date:", error);
+    return "N/A";
+  }
+};

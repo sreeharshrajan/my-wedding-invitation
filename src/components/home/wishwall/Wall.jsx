@@ -1,88 +1,185 @@
 import React, { useRef, useEffect, useState } from "react";
 import Card from "./Card";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+const SWIPE_CONFIDENCE_THRESHOLD = 10000;
+const swipeConfidenceCheck = (offset, velocity) => {
+  return Math.abs(velocity) * offset > SWIPE_CONFIDENCE_THRESHOLD;
+};
 
 const Wall = ({ wishes }) => {
   const containerRef = useRef(null);
+  const [[page, direction], setPage] = useState([0, 0]);
   const [columns, setColumns] = useState(3);
-  const cardRefs = useRef([]);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [containerHeight, setContainerHeight] = useState(0);
+  const totalPages = Math.ceil(wishes.length / itemsPerPage);
 
-  // Reset card refs array when wishes change
+  // Handle responsive columns and container height
   useEffect(() => {
-    cardRefs.current = cardRefs.current.slice(0, wishes.length);
-  }, [wishes]);
-
-  // Handle responsive columns
-  useEffect(() => {
-    const updateColumns = () => {
+    const updateLayout = () => {
       if (!containerRef.current) return;
       const width = containerRef.current.offsetWidth;
+      const height = containerRef.current.offsetHeight;
+      setContainerHeight(height);
+
+      // Update columns based on width
       if (width < 640) setColumns(1);
       else if (width < 1024) setColumns(2);
       else setColumns(3);
     };
 
-    updateColumns();
-    window.addEventListener('resize', updateColumns);
-    return () => window.removeEventListener('resize', updateColumns);
+    updateLayout();
+    window.addEventListener('resize', updateLayout);
+    return () => window.removeEventListener('resize', updateLayout);
   }, []);
 
-  // GSAP animations
+  // Calculate items per page based on container height
   useEffect(() => {
-    cardRefs.current.forEach((card, index) => {
-      // Initial state
-      gsap.set(card, {
-        opacity: 0,
-        y: 50,
-      });
+    if (containerHeight > 0) {
+      const cardHeight = 170; // Approximate height of a card including gap
+      const availableHeight = containerHeight - 100; // Subtract padding and indicators
+      const rowsPerPage = Math.floor(availableHeight / cardHeight);
+      const calculatedItemsPerPage = rowsPerPage * columns;
 
-      // Create animation
-      gsap.to(card, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse",
-        },
-        delay: index % columns * 0.1, // Stagger based on column position
-      });
-    });
+      if (calculatedItemsPerPage !== itemsPerPage) {
+        setItemsPerPage(Math.max(calculatedItemsPerPage, columns));
+        // Reset to first page when layout changes
+        setPage([0, 0]);
+      }
+    }
+  }, [containerHeight, columns]);
 
-    return () => {
-      // Cleanup ScrollTrigger instances
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [columns, wishes]);
+  const paginate = (newDirection) => {
+    const newPage = page + newDirection;
+    if (newPage >= 0 && newPage < totalPages) {
+      setPage([newPage, newDirection]);
+    }
+  };
+
+  // Get current page wishes
+  const getCurrentPageWishes = () => {
+    const startIndex = page * itemsPerPage;
+    return wishes.slice(startIndex, startIndex + itemsPerPage);
+  };
 
   // Distribute wishes into columns
   const getColumnWishes = (columnIndex) => {
-    return wishes.filter((_, index) => index % columns === columnIndex);
+    return getCurrentPageWishes().filter((_, index) => index % columns === columnIndex);
+  };
+
+  // Variants for page transitions
+  const pageVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
+  // Swipe handling
+  const swipeProps = {
+    drag: "x",
+    dragElastic: 1,
+    onDragEnd: (e, { offset, velocity }) => {
+      const swipe = swipeConfidenceCheck(offset.x, velocity.x);
+      if (swipe) {
+        paginate(offset.x < 0 ? 1 : -1);
+      }
+    }
   };
 
   return (
-    <div ref={containerRef} className="container mx-auto mb-10 xl:px-0">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.from({ length: columns }, (_, columnIndex) => (
-          <div key={columnIndex} className="flex flex-col gap-6">
-            {getColumnWishes(columnIndex).map((wish, wishIndex) => (
-              <div
-                key={wish.id}
-                ref={el => {
-                  const globalIndex = wishIndex * columns + columnIndex;
-                  cardRefs.current[globalIndex] = el;
-                }}
-                className="transform-gpu" // Enable GPU acceleration
-              >
-                <Card wish={wish} />
+    <div className="max-h-[70vh] min-h-[70vh] relative">
+      {/* Navigation Buttons */}
+      <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+        <motion.button
+          onClick={() => paginate(-1)}
+          className={`bg-white/10 hover:bg-white/20 rounded-full text-white-400 p-3 backdrop-blur-sm
+            ${page === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+          whileHover={{ x: 5 }}
+          whileTap={{ scale: 0.9 }}
+          disabled={page === 0}
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </motion.button>
+      </div>
+
+      <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+        <motion.button
+          onClick={() => paginate(1)}
+          className={`bg-white/10 hover:bg-white/20 rounded-full text-white-400 p-3 backdrop-blur-sm
+            ${page === totalPages - 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+          whileHover={{ x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          disabled={page === totalPages - 1}
+        >
+          <ChevronRight className="w-6 h-6" />
+        </motion.button>
+      </div>
+
+      {/* Main Content */}
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+        <motion.div
+          ref={containerRef}
+          key={page}
+          custom={direction}
+          variants={pageVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 }
+          }}
+          {...swipeProps}
+          className="h-full w-full px-12 py-6"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full">
+            {Array.from({ length: columns }, (_, columnIndex) => (
+              <div key={columnIndex} className="flex flex-col gap-4">
+                {getColumnWishes(columnIndex).map((wish, index) => (
+                  <motion.div
+                    key={wish.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.5,
+                      ease: [0.33, 1, 0.68, 1]
+                    }}
+                    className="transform-gpu"
+                  >
+                    <Card wish={wish} />
+                  </motion.div>
+                ))}
               </div>
             ))}
           </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Page Indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <motion.button
+            key={i}
+            onClick={() => setPage([i, i > page ? 1 : -1])}
+            className={`w-2 h-2 rounded-full transition-colors
+              ${i === page ? 'bg-blue-500' : 'bg-gray-600 hover:bg-gray-500'}`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+          />
         ))}
       </div>
     </div>

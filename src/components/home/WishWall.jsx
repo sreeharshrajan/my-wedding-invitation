@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import {
   collection,
   addDoc,
@@ -10,7 +11,7 @@ import { db } from "@/lib/firebase";
 import Wall from "@/components/home/wishwall/Wall";
 import Modal from "@/components/home/wishwall/Modal";
 import Button from "@/components/home/wishwall/Button";
-import Card from "@/components/home/wishwall/Card";
+import Loader from "@/components/ui/Loader";
 
 export default function WishWall() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,13 +24,26 @@ export default function WishWall() {
     featured: false,
   });
   const [loading, setLoading] = useState(false);
+  const [fetchingWishes, setFetchingWishes] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  // Set up intersection observer
+  const { ref, inView } = useInView({
+    threshold: 0.1, // Trigger when 10% of the component is visible
+    triggerOnce: true, // Only trigger once
+  });
 
   useEffect(() => {
-    fetchWishes();
-  }, []);
+    // Only fetch wishes when the section comes into view and hasn't loaded before
+    if (inView && !hasLoaded) {
+      fetchWishes();
+      setHasLoaded(true);
+    }
+  }, [inView, hasLoaded]);
 
   const fetchWishes = async () => {
+    setFetchingWishes(true);
     try {
       const wishesQuery = query(
         collection(db, "wishes"),
@@ -44,6 +58,8 @@ export default function WishWall() {
       setWishes(wishesData.filter((wish) => !wish.hidden));
     } catch (error) {
       console.error("Error fetching wishes:", error);
+    } finally {
+      setFetchingWishes(false);
     }
   };
 
@@ -79,7 +95,11 @@ export default function WishWall() {
   };
 
   return (
-    <section id="wishWall" className="relative flex flex-col min-h-screen py-20 bg-gradient-to-b">
+    <section
+      ref={ref}
+      id="wishWall"
+      className="relative flex flex-col min-h-screen py-20 bg-gradient-to-b"
+    >
       <div className="absolute inset-0 backdrop-blur blur-xl z-0">
         <div
           className="absolute inset-0 bg-[url('/images/hero_bg-2.jpg')] bg-cover bg-center bg-no-repeat bg-clip-border bg-fixed"
@@ -89,21 +109,18 @@ export default function WishWall() {
       </div>
       <div className="container mx-auto px-4 z-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary mb-4 text-gray-100"> Wall of Wishes</h2>
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            text="Post Your Wishes"
-          />
-
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary mb-4 text-gray-100">
+            Wall of Wishes
+          </h2>
+          <Button onClick={() => setIsModalOpen(true)} text="Post Your Wishes" />
         </div>
 
-        {/* Wishes Wall */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {wishes.map((wish) => (
-            <Card key={wish.id} wish={wish} />
-          ))}
-        </div> */}
-        <Wall wishes={wishes} />
+        {/* Wishes Wall with Loading State */}
+        {fetchingWishes ? (
+          <Loader />
+        ) : (
+          <Wall wishes={wishes} />
+        )}
 
         {/* Modal */}
         <Modal
