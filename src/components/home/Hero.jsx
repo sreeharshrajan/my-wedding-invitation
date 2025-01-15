@@ -60,7 +60,7 @@ const Hero = () => {
             </h5>
 
             <h2 className="hero-title font-primary text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
-              Deviprya &amp; Sreeharsh
+              Devipriya &amp; Sreeharsh
             </h2>
           </div>
         </div>
