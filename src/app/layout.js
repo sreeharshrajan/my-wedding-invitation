@@ -5,6 +5,7 @@ import Loader from "@/components/ui/Loader";
 import { LoaderProvider } from "@/providers/LoaderProvider";
 import { NavigationLoader } from "@/components/ui/NavigationLoader";
 import MusicControl from "@/components/ui/MusicControl";
+import WishAlert from "@/components/home/WishAlert";
 
 const aleo = Aleo({
   weight: ["400", "500", "700"],
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
             <NavigationLoader />
             {children}
             <MusicControl />
+            <WishAlert />
           </Suspense>
         </LoaderProvider>
       </body>
