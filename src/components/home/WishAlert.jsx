@@ -55,7 +55,7 @@ const WishAlert = () => {
   if (!isVisible || loading) return null;
 
   return (
-    <div className="fixed top-8 right-4 z-50 cursor-pointer" onClick={handleClick}>
+    <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer" onClick={handleClick}>
       <Alert className="bg-primary text-primary-foreground backdrop-blur-lg bg-slate-50/10 border-primary/50 shadow-lg animate-in slide-in-from-right transition-all duration-1000">
         <AlertDescription className="text-sm font-medium">
           {count} {count === 1 ? 'person has' : 'people have'} wished the couple, recently!
