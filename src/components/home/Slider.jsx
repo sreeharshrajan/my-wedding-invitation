@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import gsap from "gsap";
+import Link from "next/link";
 
 export const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -167,6 +168,7 @@ export const Slider = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-gray-900">
+
       {/* Background Images */}
       <div ref={backgroundRef} className="absolute inset-0 z-0">
         {slides.map((slide, index) => (
@@ -260,6 +262,11 @@ export const Slider = () => {
           <ChevronRight className="w-6 h-6 text-white" />
         </button>
       </div>
+
+      <Link href="/save-the-date" className="absolute left-[40px] top-[40px] z-10 flex items-center gap-2 bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors duration-200">
+        <Calendar size={20} />
+        <span className="text-white">Save the date</span>
+      </Link>
 
       <style jsx>{`
         .current--card {
