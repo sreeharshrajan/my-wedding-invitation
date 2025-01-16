@@ -47,17 +47,25 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Countdown Timer */}
-      <div className="relative z-10 w-full flex justify-center py-6 lg:py-10">
-        <CountdownTimer targetTime={targetDate} />
-      </div>
+      {targetDate > new Date() && (
+        <div className="relative z-10 w-full flex justify-center py-6 lg:py-10">
+          <CountdownTimer targetTime={targetDate} />
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center min-h-[calc(100vh-280px)]">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-2 md:space-y-6">
-            <h5 className="hero-subtitle font-aleo text-white tracking-wide opacity-90 text-sm md:text-base lg:text-lg">
-              We are getting married on January 19, 2025
-            </h5>
+            {targetDate > new Date() ? (
+              <h5 className="hero-subtitle font-aleo text-white tracking-wide opacity-90 text-sm md:text-base lg:text-lg">
+                We are getting married on {targetDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+              </h5>
+            ) : (
+              <h5 className="hero-subtitle font-aleo text-white tracking-wide opacity-90 text-sm md:text-base lg:text-lg">
+                January 19, 2025
+              </h5>
+            )}
 
             <h2 className="hero-title font-primary text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
               Devipriya &amp; Sreeharsh

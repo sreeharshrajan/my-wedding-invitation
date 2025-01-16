@@ -104,7 +104,7 @@ const Wall = ({ wishes }) => {
   };
 
   return (
-    <div className="max-h-[70vh] min-h-[70vh] relative">
+    <div className="max-h-[70vh] min-h-[70vh] relative overflow-clip">
       {/* Navigation Buttons - Adjusted positioning for mobile */}
       <div className="absolute inset-y-0 left-0 z-10 flex items-center sm:pl-2">
         <motion.button

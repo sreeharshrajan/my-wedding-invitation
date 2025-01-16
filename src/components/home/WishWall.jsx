@@ -98,7 +98,7 @@ export default function WishWall() {
     <section
       ref={ref}
       id="wishWall"
-      className="relative flex flex-col min-h-screen py-20 bg-gradient-to-b overflow-x-hidden"
+      className="relative flex flex-col min-h-screen py-20 bg-gradient-to-b "
     >
       <div className="absolute inset-0 backdrop-blur blur-xl z-0">
         <div

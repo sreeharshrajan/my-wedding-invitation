@@ -86,7 +86,7 @@ const WishCard = ({ wish }) => {
         <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
           <button
             type="button"
-            className="p-1.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
+            className="p-1.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors z-1"
             onClick={handleShare}
           >
             <Share2 className="w-4 h-4 text-pink-200" />
@@ -104,22 +104,22 @@ const WishCard = ({ wish }) => {
         {/* Content */}
         <div className="relative z-10">
           {isCodeMessage ? (
-            <pre className="bg-gray-900/80 text-green-300 p-4 rounded-lg overflow-x-auto font-mono text-sm mb-4">
+            <Link href={`/wishes/${wish.id}`} className="bg-gray-900/80 text-green-300 p-4 rounded-lg overflow-x-auto font-mono text-sm mb-4">
               {truncatedMessage}
-            </pre>
+            </Link>
           ) : (
-            <p className="text-white/90 italic mb-4 font-aleo text-lg">
+              <Link href={`/wishes/${wish.id}`} className="text-white/90 italic mb-4 font-aleo text-lg">
               &ldquo;{truncatedMessage}&rdquo;
-            </p>
+              </Link>
           )}
 
-          <div className="flex justify-between items-center">
-            <p className="font-medium text-white/90 font-aleo">- {wish.name.charAt(0).toUpperCase() + wish.name.slice(1)}</p>
+          <div className="flex justify-between items-center mt-2">
+            <Link href={`/wishes/${wish.id}`} className="font-medium text-sm text-white/90 font-aleo">- {wish.name.charAt(0).toUpperCase() + wish.name.slice(1)}</Link>
 
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                className={`flex items-center gap-1 px-3 py-1 rounded-full transition-all duration-300
+                className={`flex items-center gap-1 px-3 py-1 rounded-full transition-all text-base duration-300
                   ${hasLiked
                     ? "bg-pink-100/20 text-pink-300"
                     : "bg-white/10 text-white/70 hover:bg-pink-100/20 hover:text-pink-300"
@@ -127,7 +127,7 @@ const WishCard = ({ wish }) => {
                 onClick={handleLike}
                 disabled={isLiking || hasLiked}
               >
-                <span className="text-xl">{hasLiked ? "❤️" : "🤍"}</span>
+                <span className="">{hasLiked ? "❤️" : "🤍"}</span>
                 <span className="font-medium">{localLikes}</span>
               </button>
 
